@@ -1,4 +1,4 @@
-![](aMeta.png)
+![](logo.png)
 
 # Machine Learning for Multi-Omics Integration
 
