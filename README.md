@@ -1,4 +1,4 @@
-![](course_logo.jpg)
+![](aMeta.png)
 
 # Machine Learning for Multi-Omics Integration
 
