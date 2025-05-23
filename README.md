@@ -29,14 +29,12 @@ By completing this course, you will:
 
 | Time   | Activity                                                          | Link                                                                                                                                                    |
 |--------|-------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ~ 1 h  | Recorded talk: Omics Logic Symposium 2022                                                                                 | [Video](https://www.youtube.com/watch?v=Jrz6t3fbOCw)                                            |
-| ~ 2 h  | Primer article: Predicting type 2 diabetes via machine learning integration of multiple omics from human pancreatic islets| [PDF](articles/Multi_Omics_T2D_ScientificReports2024.pdf)                                       |
+| ~ 1 h  | Recorded talk: Microbiome Virtual International Forum (MVIF) 2024                                                         | [Video](https://www.youtube.com/watch?v=nIWpmUWAapM&t=39s)                                      |
+| ~ 2 h  | aMeta publication in Genome Biology                                                                                       | [PDF](articles/aMeta_GenomeBiology_2023.pdf)                                                    |
 | ~ 1 h  | In case needed: Recap on Unix                                                                                             | [Lab](command-line-basics.md)                                                                   |
-| ~ 1 h  | Useful reading: Select features or Omics integration                                                                      | [Blog](https://towardsdatascience.com/select-features-for-omics-integration-511390b7e7fd)       |
-| ~ 1 h  | Useful reading: Supervised Omics integration                                                                              | [Blog](https://towardsdatascience.com/supervised-omics-integration-2158e1a6d23f)                |
-| ~ 1 h  | Useful reading: Unsupervised Omics integration                                                                            | [Blog](https://towardsdatascience.com/unsupervised-omics-integration-688bf8fa49bf)              |
-| ~ 1 h  | Useful reading: UMAP for data integration                                                                                 | [Blog](https://towardsdatascience.com/umap-for-data-integration-50b5cfa4cdcd)                   |
-| ~ 1 h  | Useful reading: Deep Learning for data integration                                                                        | [Blog](https://towardsdatascience.com/deep-learning-for-data-integration-46d51601f781)          |
+| ~ 1 h  | Useful reading: Microbial contaminamination in eukaryotic reference genomes                                               | [Blog](https://www.biorxiv.org/content/10.1101/2025.03.19.644176v1)                             |
+| ~ 1 h  | Useful reading: Fungal DNA in Ötzi's gut                                                                                  | [PDF](articles/Oskolkov_BMC_Genomics_2025.pdf)                                                  |
+| ~ 1 h  | Useful reading: Filtering criteria for taxonomic classification with Kraken                                               | [Blog](https://www.biorxiv.org/content/10.1101/2025.03.31.646431v1)                             |
 
 
 
