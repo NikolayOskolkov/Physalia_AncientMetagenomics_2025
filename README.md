@@ -46,7 +46,7 @@ By completing this course, you will:
 | 14.45 - 15.00  | Break                                                                                      |                                                                                |
 | 15.00 - 16.00  | Introduction to biological Multi-Omics data integration via Machine Learning: key concepts | [Slides](slides/MachineLearningOmicsIntegration_Oskolkov.pdf)                  |
 | 16.00 - 16.15  | Break                                                                                      |                                                                                |
-| 16.15 - 17.15  | Feature selection and supervised Omics integration                                         | [Slides](slides/SupervisedOmicsIntegration_Oskolkov.pdf)                       |
+| 16.15 - 17.15  | Decontamination analysis                                                                   | [Slides](slides/Lecture_Decontamination.pdf)                                   |
 | 17.15 - 17.30  | Break                                                                                      |                                                                                |
 | 17.30 - 18.30  | Methods for univariate vs. multivariate feature selection: LASSO, PLS, LDA                 | [Lab](https://html-preview.github.io/?url=https://github.com/NikolayOskolkov/Physalia_MLOmicsIntegration_2025/blob/main/practicals/OmicsIntegration_FeatureSelection.html)                       |
 | 18.30 - 18.45  | Break                                                                                      |                                                                                |
@@ -61,7 +61,7 @@ By completing this course, you will:
 | 15.00 - 15.15  | Break                                                                                       |                                                                                |
 | 15.15 - 16.45  | Methods for unsupervised Omics integration: MOFA1 and MOFA2                                 | [Lab](https://html-preview.github.io/?url=https://github.com/NikolayOskolkov/Physalia_MLOmicsIntegration_2025/blob/main/practicals/UnsupervisedOMICsIntegration_MOFA2.html)                     |
 | 16.45 - 17.00  | Break                                                                                       |                                                                                |
-| 17.00 - 18.00  | Applications of artificial neural networks and Deep Learning to biological data integration | [Slides](slides/DeepLearningOmicsIntegration_Oskolkov.pdf)                     |
+| 17.00 - 18.00  | Authentication analysis                                                                     | [Slides](slides/Lecture_Authentication.pdf)                                    |
 | 18.00 - 18.15  | Break                                                                                       |                                                                                |
 | 18.15 - 20.00  | Methods for Omics integration via neural networks: Autoencoder                              | [Lab](https://html-preview.github.io/?url=https://github.com/NikolayOskolkov/Physalia_MLOmicsIntegration_2025/blob/main/practicals/DeepLearningDataIntegration.html)                             |
 
