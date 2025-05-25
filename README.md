@@ -78,7 +78,7 @@ By completing this course, you will:
 | 16.45 - 17.00  | Break                                                                                           |                                                                                                                                      |
 | 17.00 - 18.00  | Metagenome de-novo assembly and quality control                                                 | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_Assembly.pdf)                |
 | 18.00 - 18.15  | Break                                                                                           |                                                                                                                                      |
-| 18.15 - 19.30  | Practical: de-novo assembly and quality control                                                 | [Lab](exercises.md#assembly-qc)                                                                                                      |
+| 18.15 - 19.30  | Practical: de-novo assembly and quality control                                                 | [Lab](exercises.md#metagenome-assembly)                                                                                              |
 | 19.30 - 20.00  | Questions an discussion                                                                         |                                                                                                                                      |
 
 
