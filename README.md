@@ -64,7 +64,7 @@ By completing this course, you will:
 | 16.45 - 17.00  | Break                                                                                      |                                                                                                                                          |
 | 17.00 - 18.00  | Authentication analysis                                                                    | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_Authentication.pdf)              |
 | 18.00 - 18.15  | Break                                                                                      |                                                                                                                                          |
-| 18.15 - 20.00  | Practical: genomic hit confirmation                                                        | [Lab](exercises.md#genomic-hit-confirmation)                                                                                             |
+| 18.15 - 20.00  | Practical: genomic hit confirmation by evenness of coverage and demination                 | [Lab](exercises.md#genomic-hit-confirmation)                                                                                             |
 
 
 ## Day 3: 2 pm - 8 pm Berlin time
