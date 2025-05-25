@@ -30,10 +30,10 @@ By completing this course, you will:
 | Time   | Activity                                                          | Link                                                                                                                                                    |
 |--------|-------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ~ 1 h  | Recorded talk: Microbiome Virtual International Forum (MVIF) 2024                                                         | [Video](https://www.youtube.com/watch?v=nIWpmUWAapM&t=39s)                                      |
-| ~ 2 h  | aMeta publication in Genome Biology                                                                                       | [PDF](articles/aMeta_GenomeBiology_2023.pdf)                                                    |
+| ~ 2 h  | aMeta publication in Genome Biology                                                                                       | [PDF](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/articles/aMeta_GenomeBiology_2023.pdf)                                                    |
 | ~ 1 h  | In case needed: Recap on Unix                                                                                             | [Lab](command-line-basics.md)                                                                   |
 | ~ 1 h  | Useful reading: Microbial contaminamination in eukaryotic reference genomes                                               | [Blog](https://www.biorxiv.org/content/10.1101/2025.03.19.644176v1)                             |
-| ~ 1 h  | Useful reading: Fungal DNA in Ötzi's gut                                                                                  | [PDF](articles/Oskolkov_BMC_Genomics_2025.pdf)                                                  |
+| ~ 1 h  | Useful reading: Fungal DNA in Ötzi's gut                                                                                  | [PDF](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/articles/Oskolkov_BMC_Genomics_2025.pdf)                                                  |
 | ~ 1 h  | Useful reading: Filtering criteria for taxonomic classification with Kraken                                               | [Blog](https://www.biorxiv.org/content/10.1101/2025.03.31.646431v1)                             |
 
 
@@ -46,7 +46,7 @@ By completing this course, you will:
 | 14.45 - 15.00  | Break                                                                                      |                                                                                |
 | 15.00 - 16.00  | Introduction to biological Multi-Omics data integration via Machine Learning: key concepts | [Slides](slides/MachineLearningOmicsIntegration_Oskolkov.pdf)                  |
 | 16.00 - 16.15  | Break                                                                                      |                                                                                |
-| 16.15 - 17.15  | Decontamination analysis                                                                   | [Slides](slides/Lecture_Decontamination.pdf)                                   |
+| 16.15 - 17.15  | Decontamination analysis                                                                   | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_Decontamination.pdf)                                   |
 | 17.15 - 17.30  | Break                                                                                      |                                                                                |
 | 17.30 - 18.30  | Methods for univariate vs. multivariate feature selection: LASSO, PLS, LDA                 | [Lab](https://html-preview.github.io/?url=https://github.com/NikolayOskolkov/Physalia_MLOmicsIntegration_2025/blob/main/practicals/OmicsIntegration_FeatureSelection.html)                       |
 | 18.30 - 18.45  | Break                                                                                      |                                                                                |
@@ -61,7 +61,7 @@ By completing this course, you will:
 | 15.00 - 15.15  | Break                                                                                       |                                                                                |
 | 15.15 - 16.45  | Methods for unsupervised Omics integration: MOFA1 and MOFA2                                 | [Lab](https://html-preview.github.io/?url=https://github.com/NikolayOskolkov/Physalia_MLOmicsIntegration_2025/blob/main/practicals/UnsupervisedOMICsIntegration_MOFA2.html)                     |
 | 16.45 - 17.00  | Break                                                                                       |                                                                                |
-| 17.00 - 18.00  | Authentication analysis                                                                     | [Slides](slides/Lecture_Authentication.pdf)                                    |
+| 17.00 - 18.00  | Authentication analysis                                                                     | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_Authentication.pdf)                                    |
 | 18.00 - 18.15  | Break                                                                                       |                                                                                |
 | 18.15 - 20.00  | Methods for Omics integration via neural networks: Autoencoder                              | [Lab](https://html-preview.github.io/?url=https://github.com/NikolayOskolkov/Physalia_MLOmicsIntegration_2025/blob/main/practicals/DeepLearningDataIntegration.html)                             |
 
