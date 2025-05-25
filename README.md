@@ -40,24 +40,24 @@ By completing this course, you will:
 
 ## Day 1: 2 pm - 8 pm Berlin time
 
-| Time           | Activity                                                                                   | Link                                                                           |
-|----------------|--------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| Time           | Activity                                                                                   | Link                                                                                                                                     |
+|----------------|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 14.00 - 14.45  | Course outline and practical information: introductions                                    | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/course-outline-and-practical-info.pdf)   |
-| 14.45 - 15.00  | Break                                                                                      |                                                                                |
+| 14.45 - 15.00  | Break                                                                                      |                                                                                                                                          |
 | 15.00 - 16.00  | Introduction to ancient microbial and environmental metagenomics                           | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_AncientMetagenomics.pdf)         |
-| 16.00 - 16.15  | Break                                                                                      |                                                                                |
-| 16.15 - 17.15  | Decontamination analysis                                                                   | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_Decontamination.pdf)             |
-| 17.15 - 17.30  | Break                                                                                      |                                                                                |
+| 16.00 - 16.15  | Break                                                                                      |                                                                                                                                          |
 | 17.30 - 18.30  | Quality control and adapter removal                                                        | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_QC_AdapterRemoval.pdf)           |
-| 18.30 - 18.45  | Break                                                                                      |                                                                                |
-| 18.45 - 20.00  | Methods for supervised Omics integration: mixOmics and DIABLO                              | [Lab](https://html-preview.github.io/?url=https://github.com/NikolayOskolkov/Physalia_MLOmicsIntegration_2025/blob/main/practicals/supervised_omics_integr_CLL.html)                             |
+| 17.15 - 17.30  | Break                                                                                      |                                                                                                                                          |
+| 17.30 - 18.30  | Taxonomic profiling                                                                        | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_TaxonomicProfiling.pdf)          |
+| 18.30 - 18.45  | Break                                                                                      |                                                                                                                                          |
+| 18.45 - 20.00  | Quality control, adapter removal and taxonomic profiling                                   | [Lab](exercises.md#read-based-taxonomic-profiling)                                                                                       |
 
 
 ## Day 2: 2 pm - 8 pm Berlin time
 
-| Time           | Activity                                                                                    | Link                                                                           |
-|----------------|---------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
-| 14.00 - 15.00  | Unsupervised Omics integration: factor analysis and graph intersection                      | [Slides](slides/UnsupervisedOmicsIntegration_Oskolkov.pdf)                     |
+| Time           | Activity                                                                                   | Link                                                                                                                                     |
+|----------------|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| 14.00 - 15.99  | Decontamination analysis                                                                   | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_Decontamination.pdf)             |
 | 15.00 - 15.15  | Break                                                                                       |                                                                                |
 | 15.15 - 16.45  | Methods for unsupervised Omics integration: MOFA1 and MOFA2                                 | [Lab](https://html-preview.github.io/?url=https://github.com/NikolayOskolkov/Physalia_MLOmicsIntegration_2025/blob/main/practicals/UnsupervisedOMICsIntegration_MOFA2.html)                     |
 | 16.45 - 17.00  | Break                                                                                       |                                                                                |
