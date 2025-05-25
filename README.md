@@ -1,4 +1,4 @@
-![](logo.png)
+![](images/logo.png)
 
 # Ancient Metagenomics
 
