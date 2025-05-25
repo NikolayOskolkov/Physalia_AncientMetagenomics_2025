@@ -261,10 +261,8 @@ Above, we constructed a fastq-file which is free from human DNA. This was done b
 
 ## Read-based taxonomic profiling
 
-There are many different tools and approaches for obtaining taxonomic profiles from metagenomes.  
-Here we will use a popular read-based taxonomic profiler [Kraken2](https://github.com/DerrickWood/kraken2) and [sourmash](https://sourmash.readthedocs.io/en/latest/).  
-What is the basic approach that each of these tools use and how they can impact the results?  
-Well, let's find out!  
+There are many different tools and approaches for obtaining taxonomic profiles from metagenomes.Here we will use a popular read-based taxonomic profiler [Kraken2](https://github.com/DerrickWood/kraken2) and [sourmash](https://sourmash.readthedocs.io/en/latest/).  
+What is the basic approach that each of these tools use and how they can impact the results? Well, let's find out!  
 
 First let's create a folder to store the results:  
 
