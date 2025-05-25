@@ -34,7 +34,7 @@ By completing this course, you will:
 | ~ 1 h  | In case needed: Recap on Unix                                                                                             | [Lab](command-line-basics.md)                                                                   |
 | ~ 1 h  | Useful reading: Microbial contaminamination in eukaryotic reference genomes                                               | [Blog](https://www.biorxiv.org/content/10.1101/2025.03.19.644176v1)                             |
 | ~ 1 h  | Useful reading: Fungal DNA in Ötzi's gut                                                                                  | [PDF](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/articles/Oskolkov_BMC_Genomics_2025.pdf)                                                  |
-| ~ 1 h  | Useful reading: Filtering criteria for taxonomic classification with Kraken                                               | [Blog](https://www.biorxiv.org/content/10.1101/2025.03.31.646431v1)                             |
+| ~ 1 h  | Useful reading: Filtering criteria for taxonomic profiling of ancient metagenomic data                                    | [Blog](https://www.biorxiv.org/content/10.1101/2025.03.31.646431v1)                             |
 
 
 
