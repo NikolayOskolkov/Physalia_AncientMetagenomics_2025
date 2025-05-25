@@ -58,13 +58,13 @@ By completing this course, you will:
 
 | Time           | Activity                                                                                   | Link                                                                                                                                     |
 |----------------|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| 14.00 - 15.99  | Decontamination analysis of metegenomic data and eukaryotic references                     | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_Decontamination.pdf)             |
+| 14.00 - 15.99  | Decontamination analysis of metegenomic data and eukaryotic reference genomes              | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_Decontamination.pdf)             |
 | 15.00 - 15.15  | Break                                                                                      |                                                                                                                                          |
 | 15.15 - 16.45  | Practical: microbial contamination correction and source tracking                          | [Lab](exercises.md#microbiome-contamination-correction)                                                                                  |
 | 16.45 - 17.00  | Break                                                                                      |                                                                                                                                          |
 | 17.00 - 18.00  | Authentication analysis                                                                    | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_Authentication.pdf)              |
 | 18.00 - 18.15  | Break                                                                                      |                                                                                                                                          |
-| 18.15 - 20.00  | Practical: genomic hit confirmation by evenness of coverage and demination                 | [Lab](exercises.md#genomic-hit-confirmation)                                                                                             |
+| 18.15 - 20.00  | Practical: genomic hit confirmation by evenness of coverage and deamination                 | [Lab](exercises.md#genomic-hit-confirmation)                                                                                             |
 
 
 ## Day 3: 2 pm - 8 pm Berlin time
