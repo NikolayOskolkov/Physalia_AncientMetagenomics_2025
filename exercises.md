@@ -421,7 +421,7 @@ The chapter has the following outline:
 
 In this chapter, we will use 10 simulated with [gargammel](https://academic.oup.com/bioinformatics/article/33/4/577/2608651) ancient metagenomic samples from Pochon et al. 2023. The simulated data can be accessed via [https://doi.org/10.17044/scilifelab.21261405](https://doi.org/10.17044/scilifelab.21261405).
 
-![](assets/images/chapters/decontamination-authentication/aMeta.png)
+![](images/aMeta.png)
 
 To download the simulated ancient metagenomic data please use the following command lines:
 
