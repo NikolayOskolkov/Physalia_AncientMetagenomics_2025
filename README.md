@@ -32,9 +32,9 @@ By completing this course, you will:
 | ~ 1 h  | Recorded talk: aMeta presented at Microbiome Virtual International Forum (MVIF) 2024                                      | [Video](https://www.youtube.com/watch?v=nIWpmUWAapM&t=39s)                                      |
 | ~ 2 h  | aMeta publication in Genome Biology 2023                                                                                  | [PDF](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/articles/aMeta_GenomeBiology_2023.pdf)                                                    |
 | ~ 1 h  | In case needed: Recap on Unix                                                                                             | [Lab](command-line-basics.md)                                                                   |
-| ~ 1 h  | Useful reading: Microbial contaminamination in eukaryotic reference genomes                                               | [Blog](https://www.biorxiv.org/content/10.1101/2025.03.19.644176v1)                             |
+| ~ 1 h  | Useful reading: Deteting microbial contaminamination in eukaryotic reference genomes                                               | [Blog](https://www.biorxiv.org/content/10.1101/2025.03.19.644176v1)                             |
 | ~ 1 h  | Useful reading: Fungal DNA in Ötzi's gut                                                                                  | [PDF](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/articles/Oskolkov_BMC_Genomics_2025.pdf)                                                  |
-| ~ 1 h  | Useful reading: Filtering criteria for taxonomic profiling of ancient metagenomic data                                    | [Blog](https://www.biorxiv.org/content/10.1101/2025.03.31.646431v1)                             |
+| ~ 1 h  | Useful reading: Filtering criteria for taxonomic profiling of ancient metagenomics data                                   | [Blog](https://www.biorxiv.org/content/10.1101/2025.03.31.646431v1)                             |
 
 
 
@@ -64,7 +64,7 @@ By completing this course, you will:
 | 16.45 - 17.00  | Break                                                                                      |                                                                                                                                          |
 | 17.00 - 18.00  | Authentication analysis                                                                    | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_Authentication.pdf)              |
 | 18.00 - 18.15  | Break                                                                                      |                                                                                                                                          |
-| 18.15 - 20.00  | Practical: genomic hit confirmation by evenness of coverage and deamination                 | [Lab](exercises.md#genomic-hit-confirmation)                                                                                             |
+| 18.15 - 20.00  | Practical: genomic hit confirmation by evenness of coverage and deamination                | [Lab](exercises.md#genomic-hit-confirmation)                                                                                             |
 
 
 ## Day 3: 2 pm - 8 pm Berlin time
