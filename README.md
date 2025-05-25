@@ -51,7 +51,7 @@ By completing this course, you will:
 | 17.30 - 17.45  | Break                                                                                      |                                                                                                                                          |
 | 17.45 - 18.45  | Taxonomic profiling                                                                        | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_TaxonomicProfiling.pdf)          |
 | 18.45 - 19.00  | Break                                                                                      |                                                                                                                                          |
-| 19.00 - 20.00  | Practical: taxonomic profiling                                                             | [Lab](exercises.md#read-based-taxonomic-profiling)                                                                                       |
+| 19.00 - 20.00  | Practical: taxonomic profiling in microbial and environmental metagenomics                 | [Lab](exercises.md#read-based-taxonomic-profiling)                                                                                       |
 
 
 ## Day 2: 2 pm - 8 pm Berlin time
