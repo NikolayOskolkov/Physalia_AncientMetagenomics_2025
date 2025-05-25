@@ -456,11 +456,11 @@ The modern validation methods aim at confirming organism presence regradless of 
 
 Concluding organism presence by relying solely on the numbers of assigned sequenced reads (aka depth of coverage metric) turns out to be not optimal and too permissive, which may result in a large amount of false-positive discoveries. For example, when using alignment to a reference genome, the mapped reads may demonstrate non-uniform coverage as visualized in the [Integrative Genomics Viewer (IGV)](https://software.broadinstitute.org/software/igv/) below.
 
-![](assets/images/chapters/decontamination-authentication/IGV_uneven_coverage_Y.pestis.png)
+![](images/IGV_uneven_coverage_Y.pestis.png)
 
 In this case, DNA reads originating from another microbe were (mis-)aligned to *Yersina pestis* reference genome. It can be observed that a large numer the reads align only to a few conserved genomic loci. Therefore, even if many thousands of DNA reads are capable of aligning to the reference genome, the overall uneven alignment pattern suggests no presence of *Yersina pestis* in the metagenomic sample. Thus, not only the number of assigned reads (proportinal to depth of coverage metric) but also the **breadth and evenness of coverage** metrics become of particular importance for veryfication of metagenomic findings, i.e. hits with DNA reads uniformly aligned across the reference genome are more likely to be true-positive detections.
 
-![](assets/images/chapters/decontamination-authentication/depth_vs_breadth_of_coverage.png)
+![](images/depth_vs_breadth_of_coverage.png)
 
 In the next sections, we will show how to practically compute the breadth and evenness of coverage via KrakenUniq and Samtools.
 
