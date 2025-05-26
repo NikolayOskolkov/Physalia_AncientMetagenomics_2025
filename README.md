@@ -27,14 +27,14 @@ By completing this course, you will:
 
 ## Before the course
 
-| Time   | Activity                                                          | Link                                                                                                                                                    |
-|--------|-------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ~ 1 h  | Recorded talk: aMeta presented at Microbiome Virtual International Forum (MVIF) 2024                                      | [Video](https://www.youtube.com/watch?v=nIWpmUWAapM&t=39s)                                      |
-| ~ 2 h  | aMeta publication in Genome Biology 2023                                                                                  | [PDF](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/articles/aMeta_GenomeBiology_2023.pdf)                                                    |
-| ~ 1 h  | In case needed: Recap on Unix                                                                                             | [Lab](command-line-basics.md)                                                                   |
-| ~ 1 h  | Useful reading: Detecting microbial contaminamination in eukaryotic reference genomes                                               | [Blog](https://www.biorxiv.org/content/10.1101/2025.03.19.644176v1)                             |
-| ~ 1 h  | Useful reading: Fungal DNA in Ötzi's gut                                                                                  | [PDF](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/articles/Oskolkov_BMC_Genomics_2025.pdf)                                                  |
-| ~ 1 h  | Useful reading: Refining filtering criteria for taxonomic profiling of ancient metagenomics data                                   | [Blog](https://www.biorxiv.org/content/10.1101/2025.03.31.646431v1)                             |
+| Time   | Activity                                                                                           | Link                                                                                                                                     |
+|--------|----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| ~ 1 h  | Recorded talk: aMeta presented at the Microbiome Virtual International Forum (MVIF) 2024           | [Video](https://www.youtube.com/watch?v=nIWpmUWAapM&t=39s)                                                                               |
+| ~ 2 h  | aMeta method article in Genome Biology 2023                                                        | [PDF](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/articles/aMeta_GenomeBiology_2023.pdf)             |
+| ~ 1 h  | Useful reading: Fungal DNA in the gut of Tyrolean Iceman (Ötzi)                                    | [PDF](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/article/Oskolkov_BMC_Genomics_2025.pdf)            |
+| ~ 1 h  | In case needed: Recap on Unix                                                                      | [Lab](command-line-basics.md)                                                                                                            |
+| ~ 1 h  | Useful reading: Detecting microbial contaminamination in eukaryotic reference genomes              | [Blog](https://www.biorxiv.org/content/10.1101/2025.03.19.644176v1)                                                                      |
+| ~ 1 h  | Useful reading: Refining filtering criteria for taxonomic profiling of ancient metagenomics data   | [Blog](https://www.biorxiv.org/content/10.1101/2025.03.31.646431v1)                                                                      |
 
 
 
@@ -70,15 +70,14 @@ By completing this course, you will:
 ## Day 3: 2 pm - 8 pm Berlin time
 
 | Time           | Activity                                                                                   | Link                                                                                                                                     |
-|----------------|-------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| 14.00 - 15.00  | Dimensionality reduction and UMAP for single cell Omics integration                             | [Slides](slides/DimensionReduction_Oskolkov.pdf)                               |
-| 15.00 - 15.15  | Break                                                                                           |                                                                                                                                     |
-| 15.15 - 15.45  | Praactical: aMeta ancient metagenomic workflow                                                  | [Lab](exercises.md#ameta-introduction-and-installation)                     |
-| 15.45 - 16.45  | Graph intersection method and UMAP application to single cell Omics integration                 | [Lab](https://html-preview.github.io/?url=https://github.com/NikolayOskolkov/Physalia_MLOmicsIntegration_2025/blob/main/practicals/UMAP_DataIntegration.html)                                    |
-| 16.45 - 17.00  | Break                                                                                           |                                                                                                                                      |
-| 17.00 - 18.00  | Metagenome de-novo assembly and quality control                                                 | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_Assembly.pdf)                |
-| 18.00 - 18.15  | Break                                                                                           |                                                                                                                                      |
-| 18.15 - 19.30  | Practical: de-novo assembly and quality control                                                 | [Lab](exercises.md#metagenome-assembly)                                                                                              |
-| 19.30 - 20.00  | Questions an discussion                                                                         |                                                                                                                                      |
+|----------------|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| 14.00 - 15.00  | aMeta: a highly accurate and memory-efficient ancient metagenomic profiling workflow       | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_aMeta.pdf)                       |
+| 15.00 - 15.15  | Break                                                                                      |                                                                                                                                          |
+| 15.15 - 16.45  | Practical: aMeta ancient metagenomic workflow                                              | [Lab](exercises.md#ameta-introduction-and-installation)                                                                                  |
+| 16.45 - 17.00  | Break                                                                                      |                                                                                                                                          |
+| 17.00 - 18.00  | Metagenome de-novo assembly, quality control and authentication of assembled contigs       | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_Assembly.pdf)                    |
+| 18.00 - 18.15  | Break                                                                                      |                                                                                                                                          |
+| 18.15 - 19.30  | Practical: de-novo assembly, quality control, authentication                               | [Lab](exercises.md#metagenome-assembly)                                                                                                  |
+| 19.30 - 20.00  | Questions an discussion                                                                    |                                                                                                                                          |
 
 
