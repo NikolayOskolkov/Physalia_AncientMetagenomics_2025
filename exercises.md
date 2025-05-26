@@ -206,7 +206,7 @@ Then, taxonomic k-mer-based classification of the ancient metagenomic reads can 
 ```bash
 for sample in $(cat SAMPLES.txt); do
 do
-krakenuniq --db ~/aMeta/resources/KrakenUniq_DB --fastq-input 03_TRIMMED/${sample}.fastq.gz \
+krakenuniq --db ~/aMeta/resources/KrakenUniq_DB --fastq-input 04_HOST_REMOVAL/${sample}_unaligned_to_hg38.fastq.gz \
 --threads 4 --classified-out 05_TAXONOMIC_PROFILE/${sample}.classified_sequences.krakenuniq \
 --unclassified-out 05_TAXONOMIC_PROFILE/${sample}.unclassified_sequences.krakenuniq \
 --output 05_TAXONOMIC_PROFILE/${sample}.sequences.krakenuniq \
