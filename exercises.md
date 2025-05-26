@@ -204,8 +204,7 @@ mkdir 05_TAXONOMIC_PROFILE
 Then, taxonomic k-mer-based classification of the ancient metagenomic reads can be done via KrakenUniq:
 
 ```bash
-for sample in $(cat SAMPLES.txt); do
-do
+for sample in $(cat SAMPLES.txt); do<
 krakenuniq --db ~/aMeta/resources/KrakenUniq_DB --fastq-input 04_HOST_REMOVAL/${sample}_unaligned_to_hg38.fastq.gz \
 --threads 4 --classified-out 05_TAXONOMIC_PROFILE/${sample}.classified_sequences.krakenuniq \
 --unclassified-out 05_TAXONOMIC_PROFILE/${sample}.unclassified_sequences.krakenuniq \
