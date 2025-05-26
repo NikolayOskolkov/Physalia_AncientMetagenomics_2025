@@ -116,13 +116,13 @@ mkdir 03_TRIMMED
 conda activate aMeta
 ```
 
-For the Illumina data, we will use a `for loop` to process each of the samples one after the other:  
+For the Illumina data, we will use a `for loop` to process each of the samples one after the other:
 
 ```bash
 for sample in $(cat SAMPLES.txt); do
   cutadapt 01_DATA/${sample}.fastq.gz \
            -o 03_TRIMMED/${sample}.fastq.gz \
-           -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC \
+           -a AGATCGGAAGAG \
            -m 50 \
            -q 20 \
            -j 4 > 03_TRIMMED/${sample}.log
@@ -131,43 +131,34 @@ done
 
 While `Cutadapt` is running: looking at the [online manual](https://cutadapt.readthedocs.io/en/stable/index.html) or running `cutadapt --help`, answer:
 
-- What do the `-o`, `-p`, `-a`, `-A`, `m`, `-q`, and `-j` flags mean?
+- What do the `-o`, `-a`, `m`, `-q`, and `-j` flags mean?
 - How did we choose the values for `-m` and `-q`?
 - What is the purpose of the redirection (`> 03_TRIMMED/${sample}.log`)?
 
 
 ### QC of the trimmed data
 
-Now the data has been trimmed, it would be a good idea to run `FastQC` and `MultiQC` again.
-Modify the [commands used for the raw data](#qc-of-the-raw-data) to match the trimmed data and run the two QC softwares.  
+Now the data has been trimmed, it would be a good idea to run `FastQC` and `MultiQC` again. Modify the [commands used for the raw data](#qc-of-the-raw-data) to match the trimmed data and run the two QC softwares.
 
-While you wait, take a look at the `Cutadapt` logs.  
-When `Cutadapt` runs, it prints lots of interesting information to the screen, which we lose once we logout of the remote machine.  
-Because we used redirection (`>`) to capture the standard output (`stdout`) of `Cutadapt`, this information is now stored in a file (`03_TRIMMED/${sample}.log`).  
-Take a look at the log file for one of the samples using the program `less`:  
+While you wait, take a look at the `Cutadapt` logs. When `Cutadapt` runs, it prints lots of interesting information to the screen, which we lose once we logout of the remote machine. Because we used redirection (`>`) to capture the standard output (`stdout`) of `Cutadapt`, this information is now stored in a file (`03_TRIMMED/${sample}.log`). Take a look at the log file for one of the samples using the program `less`:
 
-**NOTE:** You can scroll up and down using the arrow keys on your keyboard, or move one "page" at a time using the spacebar.  
-**NOTE:** To quit `less`, hit the `q` key.  
-**NOTE:** If you have set it up, you can also access the files using the `Explorer` tab on `VS Code` (`View -> Explorer`).  
+**NOTE:** You can scroll up and down using the arrow keys on your keyboard, or move one "page" at a time using the spacebar.
+**NOTE:** To quit `less`, hit the `q` key.
 
-By looking at the `Cutadapt` log, can you answer:  
-- How many read pairs we had originally?  
-- How many reads contained adapters?  
-- How many read pairs were removed because they were too short?  
-- How many base calls were quality-trimmed?  
-- Overall, what is the percentage of base pairs that were kept?  
+By looking at the `Cutadapt` log, can you answer:
+- How many read pairs we had originally?
+- How many reads contained adapters?
+- How many read pairs were removed because they were too short?
+- How many base calls were quality-trimmed?
+- Overall, what is the percentage of base pairs that were kept?
 
-When `FastQC` and `MultiQC` have finished, copy the `MultiQC` report to your local machine and open it with a browser.  
-Compare this with the report obtained earlier for the raw data.  
-Do the data look better now?  
+When `FastQC` and `MultiQC` have finished, copy the `MultiQC` report to your local machine and open it with a browser. Compare this with the report obtained earlier for the raw data. Do the data look better now?
 
 
-## Bonus step: host removal
+## Host removal
 
-Even if you work with environmental samples, it is quite likely that human DNA is also present in your sample, in this sense it is considered as contamination. 
-Therefore, to be on a safe side, it is a good practice to explicitely clean your data from it. 
-If you work with host-associated microbiome, i.e. human microbiome, this is a mandatory step, please see [here](https://retractionwatch.com/2024/06/26/all-authors-agree-to-retraction-of-nature-article-linking-microbial-dna-to-cancer/)
-what can happen if you do not properly clean your data from human DNA. Here, we demonstrate how to practically perfrom the host removal step.
+Even if you work with environmental samples, it is quite likely that human DNA is also present in your sample, in this sense it is considered as contamination. Therefore, to be on a safe side, it is a good practice to explicitely clean your data from it. 
+If you work with host-associated microbiome, i.e. human microbiome, this is a mandatory step, please see [here](https://retractionwatch.com/2024/06/26/all-authors-agree-to-retraction-of-nature-article-linking-microbial-dna-to-cancer/) what can happen if you do not properly clean your data from human DNA. Here, we demonstrate how to practically perfrom the host removal step.
 
 
 ```bash
@@ -175,12 +166,12 @@ what can happen if you do not properly clean your data from human DNA. Here, we 
 # wget http://hgdownload.soe.ucsc.edu/goldenpath/hg38/bigZips/hg38.fa.gz
 # bowtie2-build --large-index hg38.fa.gz hg38.fa.gz --threads 20
 
-cd ~/Physalia_EnvMetagenomics_2024
+cd ~/Physalia_AncientMetagenomics_2025
 mkdir 04_HOST_REMOVAL
 
 for sample in $(cat SAMPLES.txt); do
 	bowtie2 --large-index -x ~/Share/Databases/hg38.fa.gz --end-to-end --threads 4 --very-sensitive \
-	-1 03_TRIMMED/${sample}_R1.fastq.gz -2 03_TRIMMED/${sample}_R2.fastq.gz | samtools view -bS -h -@ 4 - \
+	03_TRIMMED/${sample}.fastq.gz | samtools view -bS -h -@ 4 - \
 	> 04_HOST_REMOVAL/${sample}_aligned_to_hg38.bam
 	
 	samtools sort 04_HOST_REMOVAL/${sample}_aligned_to_hg38.bam -@ 4 \
@@ -194,28 +185,70 @@ for sample in $(cat SAMPLES.txt); do
 	> 04_HOST_REMOVAL/${sample}_unaligned_to_hg38.fastq.gz
 done
 ```
-Above, we constructed a fastq-file which is free from human DNA. This was done by aligning the trimmed reads to the human reference genome and extracting unaligned reads only.
+Above, we constructed a fastq-file which is free from human DNA. This was done by aligning the trimmed reads to the human reference genome and extracting unaligned reads only. This human-free fastq-file can now be used for different purposes, such as taxonomic profiling or de-novo assembly.
 
 ## Read-based taxonomic profiling
 
-There are many different tools and approaches for obtaining taxonomic profiles from metagenomes.Here we will use a popular read-based taxonomic profiler [Kraken2](https://github.com/DerrickWood/kraken2) and [sourmash](https://sourmash.readthedocs.io/en/latest/).  
-What is the basic approach that each of these tools use and how they can impact the results? Well, let's find out!  
+There are many different tools and approaches for obtaining taxonomic profiles from metagenomes. Here we will use a popular read-based taxonomic profiler [Kraken2](https://github.com/DerrickWood/kraken2) and [sourmash](https://sourmash.readthedocs.io/en/latest/). What is the basic approach that each of these tools use and how they can impact the results? Well, let's find out!
 
-First let's create a folder to store the results:  
+First let's create a folder to store the results:
 
 ```bash
-cd ~/Physalia_EnvMetagenomics_2024
+cd ~/Physalia_AncientMetagenomics_2025
 mkdir 05_TAXONOMIC_PROFILE
 ```
 
-### Kraken2
 
-And now let's run `Kraken2`. Kraken2 is a taxonomic sequence classifier that assigns taxonomic labels to DNA sequences. 
-Kraken2 examines the k-mers within a query sequence and uses the information within those k-mers to query a database. 
-That database maps k-mers to the lowest common ancestor (LCA) of all genomes known to contain a given k-mer.  
+### KrakenUniq
+
+Then, taxonomic k-mer-based classification of the ancient metagenomic reads can be done via KrakenUniq:
 
 ```bash
-conda activate envmetagenomics
+for sample in $(cat SAMPLES.txt); do
+do
+krakenuniq --db ~/aMeta/resources/KrakenUniq_DB --fastq-input 03_TRIMMED/${sample}.fastq.gz \
+--threads 4 --classified-out 05_TAXONOMIC_PROFILE/${sample}.classified_sequences.krakenuniq \
+--unclassified-out 05_TAXONOMIC_PROFILE/${sample}.unclassified_sequences.krakenuniq \
+--output 05_TAXONOMIC_PROFILE/${sample}.sequences.krakenuniq \
+--report-file 05_TAXONOMIC_PROFILE/${sample}.krakenuniq.output
+done
+```
+
+KrakenUniq by default delivers a proxy metric for breadth of coverage called the **number of unique kmers** (in the 4th column of its output table) assigned to a taxon. KrakenUniq output can be easily filtered with respect to both depth and breadth of coverage, which substantially reduces the number of false-positive hits.
+ 
+![](images/krakenuniq_filter.png)
+
+We can filter the KrakenUniq output with respect to both depth (*taxReads*) and breadth (*kmers*) of coverage with the following custom Python script, which selects only species with at east 200 assigned reads and 1000 unique k-mers. After the filtering, we can see a *Yersinia pestis* hit in the *sample 10* that passess the filtering thresholds with respect to both depth and breadth of coverage.
+
+```bash
+for i in $(ls *.krakenuniq.output)
+do
+~/Share/scripts/filter_krakenuniq.py $i 1000 200 ~/Share/scripts/pathogenomesFound.tab
+done
+```
+
+![](images/filtered_krakenuniq_output.png)
+
+
+We can also easily produce a KrakenUniq taxonomic abundance table *krakenuniq_abundance_matrix.txt* using the custom R script below, which takes as argument the folder *KRAKENUNIQ* containing the KrakenUniq output files. From the *krakenuniq_abundance_matrix.txt* table, it becomes clear that *Yersinia pestis* seems to be present in a few other samples in addition to sample 10.
+
+```bash
+Rscript ~/Share/scripts/krakenuniq_abundance_matrix.R KRAKENUNIQ \ 
+KRAKENUNIQ_ABUNDANCE_MATRIX 1000 200
+```
+
+![](images/krakenuniq_abundance_matrix.png)
+
+While KrakenUniq delivers information about breadth of coverage by default, one has to use a special flag *--report-minimizer-data* when running Kraken2 in order to get the breadth of coverage proxy which is called the **number of distrinct minimizers** for the case of Kraken2. Below, we provide an example Kraken2 command line containing the distinct minimizer flag:
+
+
+### Kraken2
+
+And now let's run `Kraken2`. Kraken2 is a taxonomic sequence classifier that assigns taxonomic labels to DNA sequences. Kraken2 examines the k-mers within a query sequence and uses the information within those k-mers to query a database. 
+That database maps k-mers to the lowest common ancestor (LCA) of all genomes known to contain a given k-mer.
+
+```bash
+conda activate aMeta
 
 for sample in $(cat SAMPLES.txt); do
   kraken2 --db ~/Share/Databases/minikraken2_v2_8GB_201904_UPDATE \
@@ -226,18 +259,15 @@ for sample in $(cat SAMPLES.txt); do
 done
 ```
 
-Now that we have got our hands into some tables describing the abundance of the different taxa in our metagenome, it is time to make sense of the data.  
-One way to do this is making summaries, plots, statistical tests, etc, as you would normally do for any kind of species distribution data.  
-Here you are free to use whichever tool you are most familiar with (but we all know that there is only one co`R`rect tool for this).  
+Now that we have got our hands into some tables describing the abundance of the different taxa in our metagenome, it is time to make sense of the data. One way to do this is making summaries, plots, statistical tests, etc, as you would normally do for any kind of species distribution data. Here you are free to use whichever tool you are most familiar with (but we all know that there is only one co`R`rect tool for this).
 
 The idea here is to: 
-- Learn what are the main (most abundant) taxa in our samples  
-- Learn about potential differences in community composition between the samples  
-- Learn what fraction of the community we were actually able to identify at, let's say, the genus level  
-- Compare the taxonomic profiles obtainted from Illumina and Nanopore data  
+- Learn what are the main (most abundant) taxa in our sample.
+- Learn about potential differences in community composition between the samples.
+- Learn what fraction of the community we were actually able to identify at, let's say, the genus level.
+- Compare the taxonomic profiles obtainted from Illumina and Nanopore data.
 
-Hopefully you will be able to learn a bit about these metagenomic datasets.  
-And realise that there is so much that still remains unknown...  
+Hopefully you will be able to learn a bit about these metagenomic datasets. And realise that there is so much that still remains unknown...
 
 We recommend to use [R / Rstudio](https://posit.co/download/rstudio-desktop/) for visualization of microbial abundances in your sample. For example, one can use [Pavian](https://github.com/fbreitwieser/pavian) tool:
 
@@ -294,21 +324,8 @@ Are there differences between the taxonomic profiles obtained by the two differe
 
 
 
----
-title: Authentication and Decontamination analysis
-author: Nikolay Oskolkov
----
 
-::: {.callout-tip}
-For this chapter's exercises, if not already performed, you will need to create the [conda environment](before-you-start.qmd#creating-a-conda-environment) from the `yml` file in the following [archive](https://doi.org/10.5281/zenodo.6983178), and activate the environment:
-
-```bash
-conda activate decontamination-authentication
-```
-:::
-
-
-# Introduction
+# Authentication analysis
 
 In ancient metagenomics we typically try to answer two questions: "Who is there?" and "How ancient?", meaning we would like to detect an organism and investigate whether this organism is ancient. There are three typical ways to identify the presence of an organism in a metagenomic sample:
 
