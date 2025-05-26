@@ -1,9 +1,6 @@
 # Exercises
 
 1. [Setting up the cloud computing](#setting-up-the-cloud-computing)
-   1. [Setting up VS Code](#setting-up-vs-code)
-   2. [Connecting to the remote machine with VS Code](#connecting-to-the-remote-machine-with-vs-code)
-   3. [Cloning the course's GitHub repository](#cloning-the-courses-github-repository)
 2. [Getting the raw data](#getting-the-raw-data)
 3. [QC and trimming](#qc-and-trimming)
    1. [QC of the raw data](#qc-of-the-raw-data)
@@ -24,103 +21,53 @@
 
 ## Setting up the cloud computing
 
-We will use the [Amazon Cloud](https://aws.amazon.com/ec2/) (AWS EC2) services for most of the analyses.  
-The IP address of the remote machine will change every day, so a new IP adress will be posted in Slack each morning.  
-Your username - that you have received by e-mail/Slack - will be the same for the whole course.  
-We will use `ssh` to connect to the remote machine.  
-We encourage the use of [VS Code](https://code.visualstudio.com/Download), but you are welcome to use any IDE or terminal emulator that you are comfortable with.  
+We will use the [Amazon Cloud](https://aws.amazon.com/ec2/) (AWS EC2) services for most of the analyses. The IP address of the remote machine will change every day, so a new IP adress will be posted in Slack each morning. Your username - that you have received by e-mail/Slack - will be the same for the whole course. We will use `ssh` to connect to the remote machine.
 
-### Setting up VS Code
-
-1. Download `VS Code` and set it up as shown [here](Lectures/course-outline-and-practical-info.pdf)  
-2. Save the `.pem` file that you have received by e-mail somewhere in your computer  
-3. **Linux/MacOS users only:**  
-   1. Launch the `Terminal` app  
-   2. `cd` to the directory where you saved the `.pem` file
-   3. run `chmod 600 userXX.pem` (remember to change `userXX.pem` by the name of your own file)
-4. Back to `VS Code`, go to `View -> Command Palette`  
-5. Search for `ssh config`  
-6. Select `Remote-SHH: Open SSH Configuration File...`  
-7. In the next dialogue box, hit `Enter/Return`
-8. Copy and paste the following text:
-
-```
-Host physalia
-  HostName 54.245.21.143
-  User user1
-  IdentityFile ~/Desktop/user1.pem
-```
-
-9. In the 2nd, 3rd, and 4th lines:  
-   1. HostName: change to the IP adress of the day
-   2. User: change to your own username
-   3. IdentityFile: change to the location and name of the `.pem` file that you have saved in your computer 
-10. Save and close the `config` file
-
-### Connecting to the remote machine with VS Code
-
-11. Go to `View -> Command Palette`
-12. Search for `ssh connect`
-13. Select `Remote-SHH: Connect to Host...`
-14. Select `physalia` (a new window will open)
-15. If a dialogue box opens asking the server type, select `Linux`
-16. If a dialogue box opens asking if you are sure, select `Continue`
-17. If a terminal does not open by default, go to `Terminal -> New Terminal`
-
-That's it, you should now be connected to the remote machine and ready to go!  
-**Remember:** every day you should redo steps 4-7 and update `HostName` to match the IP adress of the day.  
-
-### Cloning the course's GitHub repository
-
-Once you have connected to the remote machine, you will be in your home folder (`/users/userXX`, also represented by `~` or `$HOME`).  
-**Remember:** You can check where you are with the command `pwd`.  
-
-To have access to the course's content, let's copy the GitHub repository to your `home` folder using `git clone`:
+Once you have connected to the remote machine, you will be in your home folder (`/users/userXX`, also represented by `~` or `$HOME`).
+**Remember:** You can check where you are with the command `pwd`. To have access to the course's content, let's copy the GitHub repository to your `home` folder using `git clone`:
 
 **Do this on the first day:** 
 
 ```bash
 cd ~
-git clone https://github.com/NikolayOskolkov/Physalia_EnvMetagenomics_2024
+git clone https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025
 ```
 
-**Do this every once in a while, at least each day before starting the activities:**  
+**Do this every once in a while, at least each day before starting the activities:**
 
 ```bash
-cd ~/Physalia_EnvMetagenomics_2024
+cd ~/Physalia_AncientMetagenomics_2025
 git pull
 ```
 
-**Note:** All exercises will be executed inside the `Physalia_EnvMetagenomics_2024` folder that you cloned inside your own `home` folder.  
-So remember to `cd ~/Physalia_EnvMetagenomics_2024` every time you connect to the remote machine.  
+**Note:** All exercises will be executed inside the `Physalia_AncientMetagenomics_2025` folder that you cloned inside your own `home` folder. So remember to `cd ~/Physalia_AncientMetagenomics_2025` every time you connect to the remote machine.
 
 ## Getting the raw data
 
-Copy the raw sequencing data to your own `01_DATA` folder.  
-Also copy the file `SAMPLES.txt`, which will be useful for running `for loop` and etc.  
+Copy the raw sequencing data to your own `01_DATA` folder.
+Also copy the file `SAMPLES.txt`, which will be useful for running `for loop` and etc.
 
 ```bash
 
-cd ~/Physalia_EnvMetagenomics_2024
+cd ~/Physalia_AncientMetagenomics_2025
 mkdir 01_DATA
 
-cp ~/Share/toy_data/*.fastq.gz 01_DATA/
-cp ~/Share/toy_data/SAMPLES.txt ./
+cp ~/aMeta/data/*.fastq.gz 01_DATA/
+cp ~/aMeta/data/SAMPLES.txt ./
 ```
 
 Let us now explore the data a little bit. First of all, we can look inside the gzipped-file without unzipping with `zcat`:
 
 ```bash
-zcat 01_DATA/*R1.fastq.gz | head
+zcat 01_DATA/sample1.fastq.gz | head
 ```
 
-You should see 4 lines corresponding to each read: the first line contains the read ID (each starting with @), 
-the second line corresponds to the sequence of the read, the third line is the delimiter and the fourth line contains ASCII quality scores for eac sequenced nucleotide.
+You should see 4 lines corresponding to each read: the first line contains the read ID (each starting with @), the second line corresponds to the sequence of the read, the third line is the delimiter and the fourth line contains ASCII quality scores for eac sequenced nucleotide.
 
 Let us now count the number of reads in the fastq-files:
 
 ```bash
-zcat 01_DATA/*R1.fastq.gz | grep -c @
+zcat 01_DATA/sample1.fastq.gz | grep -c @
 ```
 
 How many reads do we have in the fastq-files?
@@ -128,19 +75,16 @@ How many reads do we have in the fastq-files?
 
 ## QC and trimming
 
-Now that you have copied the raw data to your working directory, let's do some quality control.  
-The sequencing process is subject to several types of problems that can introduce errors and artifacts in the sequences.  
-Because of this, bioinformatics analyses usually start with the quality control of raw sequences.  
-He we will use [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc) and [MultiQC](https://multiqc.info/) to obtain quality reports, and [Cutadapt](https://cutadapt.readthedocs.io/en/stable/) for trimming the Illumina data, respectively.  
+Now that you have copied the raw data to your working directory, let's do some quality control. The sequencing process is subject to several types of problems that can introduce errors and artifacts in the sequences. Because of this, bioinformatics analyses usually start with the quality control of raw sequences. He we will use [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc) and [MultiQC](https://multiqc.info/) to obtain quality reports, and [Cutadapt](https://cutadapt.readthedocs.io/en/stable/) for trimming the Illumina data, respectively.
 
 ### QC of the raw data
 
-Go to your `Physalia_EnvMetagenomics_2024` folder, create a folder for the QC files, and activate the `conda` environment:  
+Go to your `Physalia_AncientMetagenomics_2025` folder, create a folder for the QC files, and activate the `conda` environment:
 
 ```bash
-cd ~/Physalia_EnvMetagenomics_2024
+cd ~/Physalia_AncientMetagenomics_2025
 mkdir 02_QC_RAW
-conda activate envmetagenomics
+conda activate aMeta
 ```
 
 And now you're ready to run the QC on the raw data:
@@ -150,30 +94,26 @@ fastqc 01_DATA/*.fastq.gz -o 02_QC_RAW -t 4
 multiqc 02_QC_RAW -o 02_QC_RAW --interactive
 ```
 
-After the QC is finished, copy the `MultiQC` report (`02_QC_RAW/multiqc_report.html`) to your local machine and open it with your favourite browser.  
-We will go through the report together before continuing with the pre-processing.  
+After the QC is finished, copy the `MultiQC` report (`02_QC_RAW/multiqc_report.html`) to your local machine and open it with your favourite browser. We will go through the report together before continuing with the pre-processing.
 
 **NOTE:** to move files to and from local and remote machines, you can use: 
-- The command-line tool [scp](https://kb.iu.edu/d/agye)  
-- A file transfer software such as [FileZilla](https://filezilla-project.org)  
-- The `VS Code` built-in `Explorer` tool (`View -> Explorer`) 
+- The command-line tool [scp](https://kb.iu.edu/d/agye)
+- A file transfer software such as [FileZilla](https://filezilla-project.org)
 
 Below we provide an example (please note that the IP address should be changed) of copying files to you local computer via `scp` command-line tool:
 
 ```bash
-scp -r -i envmeta24.pem ubuntu@54.244.63.96:/home/ubuntu/Physalia_EnvMetagenomics_2024/02_QC_RAW/* .
+scp -r -i ameta25.pem ubuntu@54.244.63.96:/home/ubuntu/Physalia_AncientMetagenomics_2025/02_QC_RAW/* .
 ```
 
 ### Read trimming
 
-Our QC reports tell us that a significant percentage of the raw sequences contain some isses such as the presence of adapters.  
-Before proceeding, it is necessary to clean up/trim the raw sequences.  
-Before start trimming the data, let's create a folder for the processed data and activate the `conda` environment:  
+Our QC reports tell us that a significant percentage of the raw sequences contain some isses such as the presence of adapters. Before proceeding, it is necessary to clean up/trim the raw sequences. Before start trimming the data, let's create a folder for the processed data and activate the `conda` environment:
 
 ```bash
-cd ~/Physalia_EnvMetagenomics_2024
+cd ~/Physalia_AncientMetagenomics_2025
 mkdir 03_TRIMMED
-conda activate envmetagenomics
+conda activate aMeta
 ```
 
 For the Illumina data, we will use a `for loop` to process each of the samples one after the other:  
@@ -192,16 +132,16 @@ for sample in $(cat SAMPLES.txt); do
 done
 ```
 
-While `Cutadapt` is running: looking at the [online manual](https://cutadapt.readthedocs.io/en/stable/index.html) or running `cutadapt --help`, answer:  
+While `Cutadapt` is running: looking at the [online manual](https://cutadapt.readthedocs.io/en/stable/index.html) or running `cutadapt --help`, answer:
 
-- What do the `-o`, `-p`, `-a`, `-A`, `m`, `-q`, and `-j` flags mean?  
-- How did we choose the values for `-m` and `-q`?  
-- What is the purpose of the redirection (`> 03_TRIMMED/${sample}.log`)?  
+- What do the `-o`, `-p`, `-a`, `-A`, `m`, `-q`, and `-j` flags mean?
+- How did we choose the values for `-m` and `-q`?
+- What is the purpose of the redirection (`> 03_TRIMMED/${sample}.log`)?
 
 
 ### QC of the trimmed data
 
-Now the data has been trimmed, it would be a good idea to run `FastQC` and `MultiQC` again.  
+Now the data has been trimmed, it would be a good idea to run `FastQC` and `MultiQC` again.
 Modify the [commands used for the raw data](#qc-of-the-raw-data) to match the trimmed data and run the two QC softwares.  
 
 While you wait, take a look at the `Cutadapt` logs.  
