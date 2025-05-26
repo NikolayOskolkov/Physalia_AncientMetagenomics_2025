@@ -220,6 +220,7 @@ KrakenUniq by default delivers a proxy metric for breadth of coverage called the
 We can filter the KrakenUniq output with respect to both depth (*taxReads*) and breadth (*kmers*) of coverage with the following custom Python script, which selects only species with at east 200 assigned reads and 1000 unique k-mers. After the filtering, we can see a *Yersinia pestis* hit in the *sample 10* that passess the filtering thresholds with respect to both depth and breadth of coverage.
 
 ```bash
+cd 05_TAXONOMIC_PROFILE
 for i in $(ls *.krakenuniq.output)
 do
 ~/Share/scripts/filter_krakenuniq.py $i 1000 200 ~/Share/scripts/pathogenomesFound.tab
@@ -324,7 +325,7 @@ Are there differences between the taxonomic profiles obtained by the two differe
 
 
 
-# Authentication analysis
+## Authentication analysis
 
 In ancient metagenomics we typically try to answer two questions: "Who is there?" and "How ancient?", meaning we would like to detect an organism and investigate whether this organism is ancient. There are three typical ways to identify the presence of an organism in a metagenomic sample:
 
