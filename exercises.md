@@ -120,10 +120,8 @@ For the Illumina data, we will use a `for loop` to process each of the samples o
 
 ```bash
 for sample in $(cat SAMPLES.txt); do
-  cutadapt 01_DATA/${sample}_R1.fastq.gz \
-           01_DATA/${sample}_R2.fastq.gz \
-           -o 03_TRIMMED/${sample}_R1.fastq.gz \
-           -p 03_TRIMMED/${sample}_R2.fastq.gz \
+  cutadapt 01_DATA/${sample}.fastq.gz \
+           -o 03_TRIMMED/${sample}.fastq.gz \
            -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC \
            -A CTGTCTCTTATACACATCTGACGCTGCCGACGA \
            -m 50 \
