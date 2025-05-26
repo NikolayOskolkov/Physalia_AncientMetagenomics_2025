@@ -254,9 +254,9 @@ conda activate aMeta
 
 for sample in $(cat SAMPLES.txt); do
   kraken2 --db ~/Share/Databases/minikraken2_v2_8GB_201904_UPDATE \
-	  --paired 03_TRIMMED/sample1_ILM_R1.fastq.gz 03_TRIMMED/sample1_ILM_R2.fastq.gz \
-	  --output 05_TAXONOMIC_PROFILE/${sample}_sequences.kraken \
-	  --report 05_TAXONOMIC_PROFILE/${sample}_kraken.output \
+	  --fastq-input 04_HOST_REMOVAL/${sample}_unaligned_to_hg38.fastq.gz \
+	  --output 05_TAXONOMIC_PROFILE/${sample}_sequences.kraken2 \
+	  --report 05_TAXONOMIC_PROFILE/${sample}_kraken2.output \
 	  --report-minimizer-data --use-names --threads 4
 done
 ```
@@ -283,12 +283,9 @@ pavian::runApp(port=5000)
 Another popular way of visualization of your data is [Krona](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-385) which can be installed and used from https://github.com/marbl/Krona.
 
 
-### sourmash
+### Bonus: sourmash
 
-There are many different appraoches for taxonomic profiling of metagenomes, each of them with their own up- and downsides.  
-Let's now try a `sourmash`. Sourmash is k-mer-based, similar to Kraken2, Bracken, and Centrifuge, but uses k-mers from across the entire dataset, rather than individual reads, to find best-match
-genomes. In this way, it is able to leverage longer-range information present in a dataset, though
-not across reads themselves.
+There are many different appraoches for taxonomic profiling of metagenomes, each of them with their own up- and downsides. Let's now try a `sourmash`. Sourmash is k-mer-based, similar to Kraken2, Bracken, and Centrifuge, but uses k-mers from across the entire dataset, rather than individual reads, to find best-match genomes. In this way, it is able to leverage longer-range information present in a dataset, though not across reads themselves.
 
 ```bash
 conda activate envmetagenomics
@@ -321,8 +318,7 @@ sourmash tax metagenome -g 05_TAXONOMIC_PROFILE/*.gather.csv \
                         --rank genus
 ```
 
-Now analyse the results from `sourmash` in `R` or other data analysis tool of your preference.  
-Are there differences between the taxonomic profiles obtained by the two different tools?  
+Now analyse the results from `sourmash` in `R` or other data analysis tool of your preference. Are there differences between the taxonomic profiles obtained by the two different tools?
 
 
 
