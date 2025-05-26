@@ -30,6 +30,7 @@ By completing this course, you will:
 | Time   | Activity                                                                                           | Link                                                                                                                                     |
 |--------|----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | ~ 1 h  | Recorded talk: aMeta presented at the Microbiome Virtual International Forum (MVIF) 2024           | [Video](https://www.youtube.com/watch?v=nIWpmUWAapM&t=39s)                                                                               |
+| ~ 1 h  | Recorded talk: False-positives in ancient metagenomics and aMeta approach, SPAAMtish 2023          | [Video](https://www.youtube.com/watch?v=KUf0auYHjrc&t=405s)                                                                              |
 | ~ 2 h  | aMeta method article in Genome Biology 2023                                                        | [PDF](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/articles/aMeta_GenomeBiology_2023.pdf)             |
 | ~ 1 h  | Useful reading: Fungal DNA in the gut of Tyrolean Iceman (Ötzi)                                    | [PDF](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/article/Oskolkov_BMC_Genomics_2025.pdf)            |
 | ~ 1 h  | In case needed: Recap on Unix                                                                      | [Lab](command-line-basics.md)                                                                                                            |
@@ -37,19 +38,18 @@ By completing this course, you will:
 | ~ 1 h  | Useful reading: Refining filtering criteria for taxonomic profiling of ancient metagenomics data   | [Blog](https://www.biorxiv.org/content/10.1101/2025.03.31.646431v1)                                                                      |
 
 
-
 ## Day 1: 2 pm - 8 pm Berlin time
 
 | Time           | Activity                                                                                   | Link                                                                                                                                     |
 |----------------|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| 14.00 - 14.45  | Course outline and practical information                                                   | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/course-outline-and-practical-info.pdf)   |
-| 14.45 - 15.30  | Introduction: challenges in ancient microbial and environmental metagenomics               | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_AncientMetagenomics.pdf)         |
+| 14.00 - 14.30  | Course outline and practical information                                                   | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/course-outline-and-practical-info.pdf)   |
+| 14.30 - 15.30  | Introduction: challenges in ancient microbial and environmental metagenomics               | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_AncientMetagenomics.pdf)         |
 | 15.30 - 15.45  | Break                                                                                      |                                                                                                                                          |
 | 15.45 - 16.30  | Quality control and adapter removal                                                        | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_QC_AdapterRemoval.pdf)           |
 | 16.30 - 16.45  | Break                                                                                      |                                                                                                                                          |
 | 16.45 - 17.30  | Practical: quality control and adapter removal                                             | [Lab](exercises.md#getting-the-raw-data)                                                                                                 |
 | 17.30 - 17.45  | Break                                                                                      |                                                                                                                                          |
-| 17.45 - 18.45  | Taxonomic profiling                                                                        | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_TaxonomicProfiling.pdf)          |
+| 17.45 - 18.45  | Taxonomic profiling and filtering criteria                                                 | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_TaxonomicProfiling.pdf)          |
 | 18.45 - 19.00  | Break                                                                                      |                                                                                                                                          |
 | 19.00 - 20.00  | Practical: taxonomic profiling in microbial and environmental ancient metagenomics         | [Lab](exercises.md#read-based-taxonomic-profiling)                                                                                       |
 
