@@ -234,8 +234,9 @@ cd ..
 We can also easily produce a KrakenUniq taxonomic abundance table *krakenuniq_abundance_matrix.txt* using the custom R script below, which takes as argument the folder *KRAKENUNIQ* containing the KrakenUniq output files. From the *krakenuniq_abundance_matrix.txt* table, it becomes clear that *Yersinia pestis* seems to be present in a few other samples in addition to sample 10.
 
 ```bash
+mkdir 06_KRAKENUNIQ_ABUNDANCE_MATRIX
 Rscript ~/Share/scripts/krakenuniq_abundance_matrix.R 05_TAXONOMIC_PROFILE \ 
-KRAKENUNIQ_ABUNDANCE_MATRIX 1000 200
+06_KRAKENUNIQ_ABUNDANCE_MATRIX 1000 200
 ```
 
 ![](images/krakenuniq_abundance_matrix.png)
