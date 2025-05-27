@@ -128,7 +128,7 @@ For the Illumina data, we will use a `for loop` to process each of the samples o
 ```bash
 for sample in $(cat SAMPLES.txt); do
   cutadapt 01_DATA/${sample}.fastq.gz \
-           -o 03_TRIMMED/${sample}.fastq.gz \
+           -o 03_TRIMMED/${sample}.trimmed.fastq.gz \
            -a AGATCGGAAGAG \
            -m 50 \
            -q 20 \
@@ -178,7 +178,7 @@ mkdir 04_HOST_REMOVAL
 
 for sample in $(cat SAMPLES.txt); do
 	bowtie2 --large-index -x ~/Share/Databases/hg38/hg38.fa.gz --end-to-end --threads 4 --very-sensitive \
-	03_TRIMMED/${sample}.fastq.gz | samtools view -bS -h -@ 4 - \
+	03_TRIMMED/${sample}.trimmed.fastq.gz | samtools view -bS -h -@ 4 - \
 	> 04_HOST_REMOVAL/${sample}_aligned_to_hg38.bam
 	
 	samtools sort 04_HOST_REMOVAL/${sample}_aligned_to_hg38.bam -@ 4 \
