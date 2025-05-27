@@ -175,6 +175,7 @@ If you work with host-associated microbiome, i.e. human microbiome, this is a ma
 
 cd ~/Physalia_AncientMetagenomics_2025
 mkdir 04_HOST_REMOVAL
+conda activate aMeta
 
 for sample in $(cat SAMPLES.txt); do
 	bowtie2 --large-index -x ~/Share/Databases/hg38/hg38.fa.gz --end-to-end --threads 4 --very-sensitive \
@@ -203,6 +204,7 @@ First let's create a folder to store the results:
 ```bash
 cd ~/Physalia_AncientMetagenomics_2025
 mkdir 05_TAXONOMIC_PROFILE
+conda activate aMeta
 ```
 
 
