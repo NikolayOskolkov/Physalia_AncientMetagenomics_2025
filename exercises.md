@@ -5,7 +5,7 @@
 3. [QC and trimming](#qc-and-trimming)
    1. [QC of the raw data](#qc-of-the-raw-data)
    2. [Read trimming](#read-trimming)
-   3. [QC of the trimmed data](#qc-of-the-trimmed-data)
+   3. [Host removal](#host-removal)
 4. [Read-based taxonomic profiling](#read-based-taxonomic-profiling)
    1. [KrakenUniq](#krakenuniq)
    2. [Bonus: Kraken2](#bonus-kraken2)
