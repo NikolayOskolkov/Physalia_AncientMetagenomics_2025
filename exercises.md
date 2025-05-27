@@ -827,7 +827,7 @@ ggplot(data, aes(fill=condition, y=value, x=reorder(name,seq(1:length(name))))) 
 
 ## Summary
 
-In this chapter we have learned that:
+In this setion we have learned that:
 
 - Evenness of coverage is an important metric for validation of findings
 
@@ -886,21 +886,6 @@ In this chapter we have learned that:
 10. **decontam**: https://www.bioconductor.org/packages/release/bioc/html/decontam.html
 
 
-
-
-
----
-title: aMeta, an accurate and memory-efficient ancient Metagenomic profiling workflow
-author: Nikolay Oskolkov
----
-
-::: {.callout-tip}
-For this chapter's exercises, if not already performed, you will need to create the [conda environment](before-you-start.qmd#creating-a-conda-environment) from the `yml` file in the following [archive](https://doi.org/10.5281/zenodo.6983178), and activate the environment:
-
-```bash
-conda activate aMeta
-```
-:::
 
 
 ## aMeta: introduction and installation
@@ -1061,19 +1046,6 @@ To visually examine the seven quality metrics
 corresponding to the numbers and colors of the heatmap, one can find them in results/AUTHENTICATION/sampleID/taxID/authentic_Sample_sampleID.trimmed.rma6_TaxID_taxID.pdf for each sample sampleID and each authenticated microbe taxID. An example of such quality metrics is shown below:
 
 ![](images/aMeta_output.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
