@@ -240,10 +240,30 @@ Rscript ~/Share/scripts/krakenuniq_abundance_matrix.R 05_TAXONOMIC_PROFILE \
 
 ![](images/krakenuniq_abundance_matrix.png)
 
-While KrakenUniq delivers information about breadth of coverage by default, one has to use a special flag *--report-minimizer-data* when running Kraken2 in order to get the breadth of coverage proxy which is called the **number of distrinct minimizers** for the case of Kraken2. Below, we provide an example Kraken2 command line containing the distinct minimizer flag:
+
+Now that we have got our hands into some tables describing the abundance of the different taxa in our metagenome, it is time to make sense of the data. One way to do this is by making summaries, plots, statistical tests, etc, as you would normally do for any kind of species distribution data. Here you are free to use whichever tool you are most familiar with.
+
+The idea here is to: 
+- Learn what are the main (most abundant) taxa in our sample.
+- Learn about potential differences in community composition between the samples.
+- Learn what fraction of the community we were actually able to identify at, let's say, the genus level.
+- Compare the taxonomic profiles obtainted from Illumina and Nanopore data.
+
+Hopefully you will be able to learn a bit about these metagenomic datasets. And realize that there is so much that still remains unknown... We recommend to use [R / Rstudio](https://posit.co/download/rstudio-desktop/) for visualization of microbial abundances in your sample. For example, one can use [Pavian](https://github.com/fbreitwieser/pavian) tool:
+
+```R
+# explore abundance in Pavian https://github.com/fbreitwieser/pavian
+if (!require(remotes)) { install.packages("remotes") }
+remotes::install_github("fbreitwieser/pavian")
+pavian::runApp(port=5000)
+```
+
+In Pavian you can upload your KrakenUniq report files ending by *krakenuniq.output, and visualize abundances of organisms via [Sankey](https://en.wikipedia.org/wiki/Sankey_diagram) plot. Another popular way of visualization of your data is [Krona](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-385) which can be installed and used from https://github.com/marbl/Krona.
+
+While KrakenUniq delivers information about breadth of coverage by default, one has to use a special flag *--report-minimizer-data* when running Kraken2 in order to get the breadth of coverage proxy which is called the **number of distrinct minimizers** for the case of Kraken2. Below, we provide an example Kraken2 command line containing the distinct minimizer flag.
 
 
-### Kraken2
+### Bonus: Kraken2
 
 And now let's run `Kraken2`. Kraken2 is a taxonomic sequence classifier that assigns taxonomic labels to DNA sequences. Kraken2 examines the k-mers within a query sequence and uses the information within those k-mers to query a database. 
 That database maps k-mers to the lowest common ancestor (LCA) of all genomes known to contain a given k-mer.
@@ -260,27 +280,6 @@ for sample in $(cat SAMPLES.txt); do
 done
 ```
 
-Now that we have got our hands into some tables describing the abundance of the different taxa in our metagenome, it is time to make sense of the data. One way to do this is making summaries, plots, statistical tests, etc, as you would normally do for any kind of species distribution data. Here you are free to use whichever tool you are most familiar with (but we all know that there is only one co`R`rect tool for this).
-
-The idea here is to: 
-- Learn what are the main (most abundant) taxa in our sample.
-- Learn about potential differences in community composition between the samples.
-- Learn what fraction of the community we were actually able to identify at, let's say, the genus level.
-- Compare the taxonomic profiles obtainted from Illumina and Nanopore data.
-
-Hopefully you will be able to learn a bit about these metagenomic datasets. And realise that there is so much that still remains unknown...
-
-We recommend to use [R / Rstudio](https://posit.co/download/rstudio-desktop/) for visualization of microbial abundances in your sample. For example, one can use [Pavian](https://github.com/fbreitwieser/pavian) tool:
-
-```R
-# explore abundance in Pavian https://github.com/fbreitwieser/pavian
-if (!require(remotes)) { install.packages("remotes") }
-remotes::install_github("fbreitwieser/pavian")
-pavian::runApp(port=5000)
-```
-
-Another popular way of visualization of your data is [Krona](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-385) which can be installed and used from https://github.com/marbl/Krona.
-
 
 ### Bonus: sourmash
 
@@ -290,7 +289,7 @@ There are many different appraoches for taxonomic profiling of metagenomes, each
 conda activate envmetagenomics
 
 for sample in $(cat SAMPLES.txt); do
-  sourmash sketch dna 03_TRIMMED/${sample}_R?.fastq.gz \
+  sourmash sketch dna 04_HOST_REMOVAL/${sample}_unaligned_to_hg38.fastq.gz \
                       -p k=31,scaled=1000,abund \
                       -o 05_TAXONOMIC_PROFILE/${sample}.sig.zip \
                       --merge ${sample}
