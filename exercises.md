@@ -1143,7 +1143,7 @@ Now we are going to explore the assembled contigs. First, we will run QC for the
 ```bash
 mkdir 07_ASSEMBLY_QC
 
-conda activate envmetagenomics
+conda activate ancientmetagenomics
 
 # check assembly quality statistics with callN50 JavaScript script 
 # that requires the k8 JavaScript shell (or node) to be installed
