@@ -316,6 +316,10 @@ done
 There are many different appraoches for taxonomic profiling of metagenomes, each of them with their own up- and downsides. Let's now try a `sourmash`. Sourmash is k-mer-based, similar to Kraken2, Bracken, and Centrifuge, but uses k-mers from across the entire dataset, rather than individual reads, to find best-match genomes. In this way, it is able to leverage longer-range information present in a dataset, though not across reads themselves.
 
 ```bash
+# You will have to download the database:
+# wget https://farm.cse.ucdavis.edu/~ctbrown/sourmash-db/gtdb-rs207/gtdb-rs207.genomic-reps.dna.k31.zip
+# wget https://farm.cse.ucdavis.edu/~ctbrown/sourmash-db/gtdb-rs207/gtdb-rs207.taxonomy.with-strain.csv.gz
+
 conda activate ancientmetagenomics
 
 for sample in $(cat SAMPLES.txt); do
