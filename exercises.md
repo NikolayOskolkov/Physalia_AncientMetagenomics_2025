@@ -143,6 +143,19 @@ While `Cutadapt` is running: looking at the [online manual](https://cutadapt.rea
 - What is the purpose of the redirection (`> 03_TRIMMED/${sample}.log`)?
 
 
+### Bonus: trimming and merging PE reads with fastp, solving polyG-tails problem
+
+```bash
+
+#DO NOT RUN (OUR DATA ARE SE AND NOT PE)
+conda activate ancientmetagenomics
+
+for sample in $(cat SAMPLES.txt); do
+fastp --in1 ${sample}_R1.fastq.gz --in2 ${sample}_R2.fastq.gz -p -c --merge --merged_out=${sample}.trimmed_merged.fastq.gz -h ${sample}_fastp_report.html -j ${sample}_fastp_report.json -w 20 -l 30
+done
+```
+
+
 ### QC of the trimmed data
 
 Now the data has been trimmed, it would be a good idea to run `FastQC` and `MultiQC` again. Modify the [commands used for the raw data](#qc-of-the-raw-data) to match the trimmed data and run the two QC softwares.
@@ -278,7 +291,12 @@ And now let's run `Kraken2`. Kraken2 is a taxonomic sequence classifier that ass
 That database maps k-mers to the lowest common ancestor (LCA) of all genomes known to contain a given k-mer.
 
 ```bash
-conda activate aMeta
+# You will have to download a Kraken2 database (for example, MiniKraken):
+# wget https://genome-idx.s3.amazonaws.com/kraken/minikraken2_v2_8GB_201904.tgz
+# tar -xzvf minikraken2_v2_8GB_201904.tgz
+
+conda deactivate
+conda activate ancientmetagenomics
 
 for sample in $(cat SAMPLES.txt); do
   kraken2 --db ~/Share/Databases/minikraken2_v2_8GB_201904_UPDATE \
@@ -295,7 +313,7 @@ done
 There are many different appraoches for taxonomic profiling of metagenomes, each of them with their own up- and downsides. Let's now try a `sourmash`. Sourmash is k-mer-based, similar to Kraken2, Bracken, and Centrifuge, but uses k-mers from across the entire dataset, rather than individual reads, to find best-match genomes. In this way, it is able to leverage longer-range information present in a dataset, though not across reads themselves.
 
 ```bash
-conda activate envmetagenomics
+conda activate ancientmetagenomics
 
 for sample in $(cat SAMPLES.txt); do
   sourmash sketch dna 04_HOST_REMOVAL/${sample}_unaligned_to_hg38.fastq.gz \
@@ -304,21 +322,21 @@ for sample in $(cat SAMPLES.txt); do
                       --merge ${sample}
 
   sourmash gather 05_TAXONOMIC_PROFILE/${sample}.sig.zip \
-                  ~/Share/Databases/gtdb-rs207.genomic-reps.dna.k31.zip \
+                  ~/Share/Databases/sourmash/gtdb-rs207.genomic-reps.dna.k31.zip \
                   -k 31 --threshold-bp 10 \
                   -o 05_TAXONOMIC_PROFILE/${sample}.gather.csv
 done
 
-# Gather results
+# Gather results per phylum and genus
 sourmash tax metagenome -g 05_TAXONOMIC_PROFILE/*.gather.csv \
-                        -t ~/Share/Databases/gtdb-rs207.taxonomy.with-strain.csv.gz \
+                        -t ~/Share/Databases/sourmash/gtdb-rs207.taxonomy.with-strain.csv.gz \
                         --output-dir 05_TAXONOMIC_PROFILE \
                         --output-base sourmash.phylum \
                         --output-format lineage_summary \
                         --rank phylum
 
 sourmash tax metagenome -g 05_TAXONOMIC_PROFILE/*.gather.csv \
-                        -t ~/Share/Databases/gtdb-rs207.taxonomy.with-strain.csv.gz \
+                        -t ~/Share/Databases/sourmash/gtdb-rs207.taxonomy.with-strain.csv.gz \
                         --output-dir 05_TAXONOMIC_PROFILE \
                         --output-base sourmash.genus \
                         --output-format lineage_summary \
