@@ -40,8 +40,19 @@ git pull
 
 ## Getting the raw data
 
-Copy the raw sequencing data to your own `01_DATA` folder.
-Also copy the file `SAMPLES.txt`, which will be useful for running `for loop` and etc.
+Here, we will use 10 simulated with [gargammel](https://academic.oup.com/bioinformatics/article/33/4/577/2608651) ancient metagenomic samples from Pochon et al. 2023. The simulated data can be accessed via [https://doi.org/10.17044/scilifelab.21261405](https://doi.org/10.17044/scilifelab.21261405).
+
+![](images/aMeta.png)
+
+To download the simulated ancient metagenomic data you can use the following command line:
+
+```bash
+# DO NOT RUN THIS (ALREADY DONE)
+wget https://figshare.scilifelab.se/ndownloader/articles/21261405/versions/1 \
+&& unzip 1 && rm 1
+```
+
+Copy the raw sequencing data to your own `01_DATA` folder. Also copy the file `SAMPLES.txt`, which will be useful for running `for loop` and etc.
 
 ```bash
 
@@ -362,31 +373,6 @@ The chapter has the following outline:
   - Decontamination via negative controls (blanks)
   - Similarity to expected microbiome source (microbial source tracking)
 
-
-# Simulated ancient metagenomic data
-
-In this chapter, we will use 10 simulated with [gargammel](https://academic.oup.com/bioinformatics/article/33/4/577/2608651) ancient metagenomic samples from Pochon et al. 2023. The simulated data can be accessed via [https://doi.org/10.17044/scilifelab.21261405](https://doi.org/10.17044/scilifelab.21261405).
-
-![](images/aMeta.png)
-
-To download the simulated ancient metagenomic data please use the following command lines:
-
-```bash
-wget https://figshare.scilifelab.se/ndownloader/articles/21261405/versions/1 \
-&& unzip 1 && rm 1
-```
-The DNA reads were simulated with damage, sequencing errors and Illumina adapters, therefore one will have to trim the adapters first:
-
-```bash
-for i in $(ls *.fastq.gz)
-do
-sample_name=$(basename $i .fastq.gz)
-cutadapt -a AGATCGGAAGAG --minimum-length 30 -o ${sample_name}.trimmed.fastq.gz \ 
-${sample_name}.fastq.gz -j 20
-done
-```
-
-Now, after the basic data pre-processing has been done, we can proceed with validation, authentication and decontamination analyses.
 
 # Genomic hit confirmation
 
@@ -1117,12 +1103,11 @@ It is optimized for metagenomes, but also works well on generic single genome as
 
 Before you start the assembly, have a look at the [Megahit usage examples](https://github.com/voutcn/megahit?tab=readme-ov-file#usage), and the [Megahit publication](https://academic.oup.com/bioinformatics/article/31/10/1674/177884).  
 
-__What options do we need?__  
-We have only given the output directory in the script below; modify it as necessary and run `megahit`:  
+__What options do we need?__
+We have only given the output directory in the script below; modify it as necessary and run `megahit`:
 
 ```bash 
-cd ~/Physalia_EnvMetagenomics_2024
-conda activate envmetagenomics
+cd ~/Physalia_AncientMetagenomics_2025
 
 for sample in $(cat SAMPLES.txt); do
 megahit -r 04_HOST_REMOVAL/${sample}_unaligned_to_hg38.fastq.gz --out-dir 06_ASSEMBLY --min-contig-len 100 -t 4
@@ -1131,7 +1116,7 @@ done
 
 ### Assembly QC
 
-Now we are going to explore the assembled contigs. First, we will run QC for the assembled contigs and compute N50 value.  
+Now we are going to explore the assembled contigs. First, we will run QC for the assembled contigs and compute N50 value.
 
 ```bash
 mkdir 07_ASSEMBLY_QC
