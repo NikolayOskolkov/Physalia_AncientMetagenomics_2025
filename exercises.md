@@ -338,7 +338,7 @@ In ancient metagenomics we typically try to answer two questions: "Who is there?
 
 The first two are reference-based, i.e. they assume a similarity of a query ancient DNA fragment to a modern reference genome in a database. This is a strong assumption, which might not be true for very old or very diverged ancient organisms. This is the case when the reference-free *de-novo* assembly approach becomes prowerful. However, *de-novo* assembly has its own computational challenges for low-coverage ancient metagenomic samples that typically contain very short DNA fragments.
 
-![](assets/images/chapters/decontamination-authentication/metagenomic_approaches.png)
+![](images/decontamination-authentication/metagenomic_approaches.png)
 
 While all the three types of metagenomic analysis are suitable for exploring composition of metagenomic samples, they do not directly validate the findings or provide information about ancient or endogenous status of the detected organims. It can happen that the detected organism
 
