@@ -225,6 +225,15 @@ conda activate aMeta
 
 ### KrakenUniq
 
+To profile the data with KrakenUniq one needs a database, a pre-built complete microbial NCBI RefSeq database can be accessed via [https://doi.org/10.17044/scilifelab.21299541](https://doi.org/10.17044/scilifelab.21299541). Please use the following command line to download the databse:
+
+```bash
+# DO NOT RUN (ALREADY DONE)
+wget https://figshare.scilifelab.se/ndownloader/articles/21299541/versions/1 \
+&& unzip 1 && rm 1
+```
+
+
 Then, taxonomic k-mer-based classification of the ancient metagenomic reads can be done via KrakenUniq:
 
 ```bash
@@ -310,6 +319,8 @@ for sample in $(cat SAMPLES.txt); do
 done
 ```
 
+Then the filtering of Kraken2 output with respect to breadth and depth of coverage can be done by analogy with filtering KrakenUniq output table. In case of *de-novo* assembly, the original DNA reads are typically alligned back to the assembled contigs, and the evennes / breadth of coverage can be computed from these alignments.
+
 
 ### Bonus: sourmash
 
@@ -375,7 +386,7 @@ While all the three types of metagenomic analysis are suitable for exploring com
 
 Therefore, additional analysis is needed to follow-up each hit and demonstrate its ancient origin. Below, we describe a few steps that can help ancient metagenomic researchers to verify their findings and put them into biological context.
 
-In this chapter, we will cover:
+In this section, we will cover:
 
 - how to recognize that a detected organism was mis-identified based on breadth / evenness of coverage
 - how to validate findings by breadth of coverage filters via k-mer based taxonomic classification with KrakenUniq
@@ -384,7 +395,7 @@ In this chapter, we will cover:
 - how negative (blank) controls can help disentangle ancient organisms from modern contaminants
 - how microbial source tracking can facilitate separating endogenous and exogenous microbial communities
 
-The chapter has the following outline:
+The section has the following outline:
 
 - Introduction
 - Simulated ancient metagenomic data
@@ -428,65 +439,7 @@ In the next sections, we will show how to practically compute the breadth and ev
 
 Here we are going to demonstrate that one can assess breadth of coverage information already at the taxonomic profiling step. Although taxonomic classifiers do not perform alignment, some of them, such as [KrakenUniq](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1568-0) and [Kraken2](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1891-0) provide a way to infer breadth of coverage in addition to the number of assigned reads to a taxon. This allows for immediate filtering out a lot of false positive hits. Since Kraken-family classifiers are typically faster and [less memory-demanding](https://www.biorxiv.org/content/10.1101/2022.06.01.494344v1.full.pdf), i.e. can work with very large reference databases, compared to genome aligners, they provide a robust and fairly unbiased initial taxonomic profiling, which can still later be followed-up with proper alignment and computing evenness of coverage as described above.
 
-To profile the data with KrakenUniq one needs a database, a pre-built complete microbial NCBI RefSeq database can be accessed via [https://doi.org/10.17044/scilifelab.21299541](https://doi.org/10.17044/scilifelab.21299541). Please use the following command line to download the databse:
-
-```bash
-wget https://figshare.scilifelab.se/ndownloader/articles/21299541/versions/1 \
-&& unzip 1 && rm 1
-```
-
-Then, taxonomic k-mer-based classification of the ancient metagenomic reads can be done via KrakenUniq:
-
-```bash
-for i in $(ls *.trimmed.fastq.gz)
-do
-krakenuniq --db KRAKENUNIQ_DB --fastq-input $i --threads 20 \
---classified-out${i}.classified_sequences.krakenuniq \
---unclassified-out ${i}.unclassified_sequences.krakenuniq \
---output ${i}.sequences.krakenuniq --report-file ${i}.krakenuniq.output
-done
-```
-
-KrakenUniq by default delivers a proxy metric for breadth of coverage called the **number of unique kmers** (in the 4th column of its output table) assigned to a taxon. KrakenUniq output can be easily filtered with respect to both depth and breadth of coverage, which substantially reduces the number of false-positive hits.
- 
-![](images/krakenuniq_filter.png)
-
-We can filter the KrakenUniq output with respect to both depth (*taxReads*) and breadth (*kmers*) of coverage with the following custom Python script, which selects only species with at east 200 assigned reads and 1000 unique k-mers. After the filtering, we can see a *Yersinia pestis* hit in the *sample 10* that passess the filtering thresholds with respect to both depth and breadth of coverage.
-
-```bash
-for i in $(ls *.krakenuniq.output)
-do
-$SCRIPTS_DIR/filter_krakenuniq.py $i 1000 200 $SCRIPTS_DIR/pathogenomesFound.tab
-done
-```
-
-![](images/filtered_krakenuniq_output.png)
-
-
-We can also easily produce a KrakenUniq taxonomic abundance table *krakenuniq_abundance_matrix.txt* using the custom R script below, which takes as argument the folder *KRAKENUNIQ* containing the KrakenUniq output files. From the *krakenuniq_abundance_matrix.txt* table, it becomes clear that *Yersinia pestis* seems to be present in a few other samples in addition to sample 10.
-
-```bash
-Rscript ${SCRIPTS_DIR}/krakenuniq_abundance_matrix.R KRAKENUNIQ \ 
-KRAKENUNIQ_ABUNDANCE_MATRIX 1000 200
-```
-
-![](images/krakenuniq_abundance_matrix.png)
-
-While KrakenUniq delivers information about breadth of coverage by default, one has to use a special flag *--report-minimizer-data* when running Kraken2 in order to get the breadth of coverage proxy which is called the **number of distrinct minimizers** for the case of Kraken2. Below, we provide an example Kraken2 command line containing the distinct minimizer flag:
-
-```bash
-DBNAME=Kraken2_DB_directory
-KRAKEN_INPUT=sample.fastq.gz
-KRAKEN_OUTPUT=Kraken2_output_directory
-kraken2 --db $DBNAME --fastq-input $KRAKEN_INPUT --threads 20 \
---classified-out $KRAKEN_OUTPUT/classified_sequences.kraken2 \
---unclassified-out $KRAKEN_OUTPUT/unclassified_sequences.kraken2 \
---output $KRAKEN_OUTPUT/sequences.kraken2 \
---report $KRAKEN_OUTPUT/kraken2.output \
---use-names --report-minimizer-data
-```
-
-Then the filtering of Kraken2 output with respect to breadth and depth of coverage can be done by analogy with filtering KrakenUniq output table. In case of *de-novo* assembly, the original DNA reads are typically alligned back to the assembled contigs, and the evennes / breadth of coverage can be computed from these alignments.
+In the Taxonomic Profiling section we saw how the output of KrakenUniq was filtered using the unique k-mer information. We concluded thay *Yersinia pestis* pathogen was present in the *sample10*. This conclusion is quite reliable with the unique k-mers information from KrakenUniq alone, however it is highly reommened to follow up this hit with proper alignments (remember, KrakenUniq is not doing alignments!) and visualization of the genome coverage using *samtools*, we will do this in the next section.
 
 
 ### Evenness of coverage via Samtools
@@ -494,6 +447,8 @@ Then the filtering of Kraken2 output with respect to breadth and depth of covera
 Now, after we have detected an interesting *Y. pestis* hit, we would like to follow it up, and compute multiple quality metrics (including proper breadth and evenness of coverage) from alignments (Bowtie2 aligner willl be used in our case) of the DNA reads to the *Y. pestis* reference genome. Below, we download *Yersinia pestis* reference genome from NCBI, build its Bowtie2 index, and align trimmed reads against *Yersinia pestis* reference genome with Bowtie2. Do not forget to sort and index the alignments as it will be important for computing the evenness of coverage. It is also recommended to remove multi-mapping reads, i.e. the ones that have MAPQ = 0, at least for Bowtie and BWA aligners that are commonly used in ancient metagenomics. Samtools with *-q* flag can be used to extract reads with MAPQ > = 1.
 
 ```bash
+conda activate ancientmetagenomics
+
 NCBI=https://ftp.ncbi.nlm.nih.gov; ID=GCF_000222975.1_ASM22297v1
 wget $NCBI/genomes/all/GCF/000/222/975/${ID}/${ID}_genomic.fna.gz
 
@@ -516,7 +471,7 @@ samtools depth -a Y.pestis_sample10.sorted.bam > Y.pestis_sample10.sorted.boc
 and visualized using for example the following R code snippet (alternatively [aDNA-BAMPlotter](https://github.com/MeriamGuellil/aDNA-BAMPlotter) can be used):
 
 ```R
-# Read output of samtools depth commans
+# Read output of samtools depth command
 df <- read.delim("Y.pestis_sample10.sorted.boc", header = FALSE, sep = "\t")
 names(df) <- c("Ref", "Pos", "N_reads")
 
