@@ -59,7 +59,7 @@ Copy the raw sequencing data to your own `01_DATA` folder. Also copy the file `S
 cd ~/Physalia_AncientMetagenomics_2025
 mkdir 01_DATA
 
-cp ~/share/data/*.fastq.gz 01_DATA/
+cp ~/Share/data/*.fastq.gz 01_DATA/
 cp ~/Share/data/SAMPLES.txt ./
 ```
 
