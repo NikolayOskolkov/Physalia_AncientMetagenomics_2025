@@ -151,7 +151,9 @@ While `Cutadapt` is running: looking at the [online manual](https://cutadapt.rea
 conda activate ancientmetagenomics
 
 for sample in $(cat SAMPLES.txt); do
-fastp --in1 ${sample}_R1.fastq.gz --in2 ${sample}_R2.fastq.gz -p -c --merge --merged_out=${sample}.trimmed_merged.fastq.gz -h ${sample}_fastp_report.html -j ${sample}_fastp_report.json -w 20 -l 30
+fastp --in1 ${sample}_R1.fastq.gz --in2 ${sample}_R2.fastq.gz -p -c \
+--merge --merged_out=${sample}.trimmed_merged.fastq.gz \
+-h ${sample}_fastp_report.html -j ${sample}_fastp_report.json -w 20 -l 30
 done
 ```
 
