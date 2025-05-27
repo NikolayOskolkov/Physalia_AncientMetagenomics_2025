@@ -59,8 +59,8 @@ Copy the raw sequencing data to your own `01_DATA` folder. Also copy the file `S
 cd ~/Physalia_AncientMetagenomics_2025
 mkdir 01_DATA
 
-cp ~/aMeta/data/*.fastq.gz 01_DATA/
-cp ~/aMeta/data/SAMPLES.txt ./
+cp ~/share/data/*.fastq.gz 01_DATA/
+cp ~/Share/data/SAMPLES.txt ./
 ```
 
 Let us now explore the data a little bit. First of all, we can look inside the gzipped-file without unzipping with `zcat`:
@@ -212,7 +212,7 @@ Then, taxonomic k-mer-based classification of the ancient metagenomic reads can 
 
 ```bash
 for sample in $(cat SAMPLES.txt); do
-krakenuniq --db ~/aMeta/resources/KrakenUniq_DB --fastq-input 04_HOST_REMOVAL/${sample}_unaligned_to_hg38.fastq.gz \
+krakenuniq --db ~/Share/KrakenUniq_DB --fastq-input 04_HOST_REMOVAL/${sample}_unaligned_to_hg38.fastq.gz \
 --threads 4 --classified-out 05_TAXONOMIC_PROFILE/${sample}.classified_sequences.krakenuniq \
 --unclassified-out 05_TAXONOMIC_PROFILE/${sample}.unclassified_sequences.krakenuniq \
 --output 05_TAXONOMIC_PROFILE/${sample}.sequences.krakenuniq \
