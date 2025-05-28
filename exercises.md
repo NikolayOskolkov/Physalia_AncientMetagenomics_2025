@@ -10,10 +10,11 @@
    1. [KrakenUniq](#krakenuniq)
    2. [Bonus: Kraken2](#bonus-kraken2)
    3. [Bonus: sourmash](#bonus-sourmash)
-5. [Decontamination analysis](#microbiome-contamination-correction)
+5. [Authentication analysis](#authentication-analysis)
+6. [Decontamination analysis](#microbiome-contamination-correction)
    1. [Microbial source tracking](#microbial-source-tracking)
    2. [Microbial contamination in eukaryotic references](#microbial-contamination-in-eukaryotic-references)
-6. [Metagenome assembly](#metagenome-assembly)
+7. [Metagenome assembly](#metagenome-assembly)
    1. [Assembly QC](#assembly-qc)
    2. [Abundance quantification of assembled contigs](#abundance-quantification-of-assembled-contigs)
    3. [Taxonomic annotation of assembled contigs](#taxonomic-annotation-of-assembled-contigs)
@@ -450,6 +451,10 @@ In the Taxonomic Profiling section we saw how the output of KrakenUniq was filte
 Now, after we have detected an interesting *Y. pestis* hit, we would like to follow it up, and compute multiple quality metrics (including proper breadth and evenness of coverage) from alignments (Bowtie2 aligner willl be used in our case) of the DNA reads to the *Y. pestis* reference genome. Below, we download *Yersinia pestis* reference genome from NCBI, build its Bowtie2 index, and align trimmed reads against *Yersinia pestis* reference genome with Bowtie2. Do not forget to sort and index the alignments as it will be important for computing the evenness of coverage. It is also recommended to remove multi-mapping reads, i.e. the ones that have MAPQ = 0, at least for Bowtie and BWA aligners that are commonly used in ancient metagenomics. Samtools with *-q* flag can be used to extract reads with MAPQ > = 1.
 
 ```bash
+cd ~/Physalia_AncientMetagenomics_2025
+mkdir 07_AUTHENTICATION
+cd 07_AUTHENTICATION
+
 conda activate ancientmetagenomics
 
 NCBI=https://ftp.ncbi.nlm.nih.gov; ID=GCF_000222975.1_ASM22297v1
@@ -460,8 +465,8 @@ seqtk subseq ${ID}_genomic.fna region.bed > NC_017168.1.fasta
 bowtie2-build --large-index NC_017168.1.fasta NC_017168.1.fasta --threads 20
 
 bowtie2 --large-index -x NC_017168.1.fasta --end-to-end --threads 20 \ 
---very-sensitive -U sample10.trimmed.fastq.gz | samtools view -bS -h -q 1 \
--@ 20 - > Y.pestis_sample10.bam
+--very-sensitive -U ../03_TRIMMED/sample10.trimmed.fastq.gz | samtools view -bS\
+ -h -q 1 -@ 20 - > Y.pestis_sample10.bam
 samtools sort Y.pestis_sample10.bam -@ 20 > Y.pestis_sample10.sorted.bam
 samtools index Y.pestis_sample10.sorted.bam
 ```
@@ -821,7 +826,7 @@ tar -xf decOM_sources.tar.gz
 
 # Run decOM predictions
 decOM -p_sources decOM_sources/ -p_sinks FASTQ_NAMES_LIST.txt \
--p_keys 03_TRIMMED -mem 900GB -t 15
+-p_keys ~/Physalia_AncientMetagenomics_2025/03_TRIMMED -mem 15GB -t 4
 ```
 
 In the command line above, he *-p_sinks* parameter provides a list of sink samples, for example *SRR13355807*.
