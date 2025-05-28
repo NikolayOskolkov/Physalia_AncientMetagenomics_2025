@@ -471,12 +471,19 @@ samtools sort Y.pestis_sample10.bam -@ 20 > Y.pestis_sample10.sorted.bam
 samtools index Y.pestis_sample10.sorted.bam
 ```
 
-Next, the breadth / evenness of coverage can be computed from the BAM-alignments via *samtools depth* as follows:
+Next, the breadth / evenness of coverage can be visualized via *samtools coverage* as follows:
+
+```bash
+samtools coverage Y.pestis_sample10.sorted.bam -m
+```
+
+Alternatively, you can compute the coverage for each genomic positionfrom the BAM-alignments via *samtools depth*:
 
 ```bash
 samtools depth -a Y.pestis_sample10.sorted.bam > Y.pestis_sample10.sorted.boc
 ```
-and visualized using for example the following R code snippet (alternatively [aDNA-BAMPlotter](https://github.com/MeriamGuellil/aDNA-BAMPlotter) can be used):
+
+then, you can download the **.boc*-file it to your computer and visualize using for example the following R code snippet (alternatively [aDNA-BAMPlotter](https://github.com/MeriamGuellil/aDNA-BAMPlotter) can be used):
 
 ```R
 # Read output of samtools depth command
