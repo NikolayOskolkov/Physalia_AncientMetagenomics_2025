@@ -11,6 +11,7 @@
    2. [Bonus: Kraken2](#bonus-kraken2)
    3. [Bonus: sourmash](#bonus-sourmash)
 5. [Decontamination analysis](#microbiome-contamination-correction)
+   1. [Microbial source tracking](#microbial-source-tracking)
 6. [Metagenome assembly](#metagenome-assembly)
    1. [Assembly QC](#assembly-qc)
    2. [Abundance quantification of assembled contigs](#abundance-quantification-of-assembled-contigs)
@@ -919,6 +920,28 @@ In this setion we have learned that:
 9. **cuperdec**: https://cran.r-project.org/web/packages/cuperdec/index.html
 
 10. **decontam**: https://www.bioconductor.org/packages/release/bioc/html/decontam.html
+
+
+
+
+
+## Microbial contamination in eukaryotic references
+
+In this exercise we will explore a computational workflow for detecting coordinates of microbial-like sequences in eukaryotic reference genomes. The workflow accepts a reference genome in FASTA-format and outputs coordinates of microbial-like regions in BED-format. The workflow builds a Bowtie2 index of the eukaryotic reference genome and aligns pre-computed microbial GTDB v.214 (https://gtdb.ecogenomic.org/) pseudo-reads to the reference, then custom scripts are used for detection of the positions of covered regions and quantification of most abundant microbial contaminants.
+
+Please note that in this gitub reporsitory, we provide a small subset of microbial pseudo-reads for demonstration purposes, the full dataset is available at the SciLifeLab Figshare https://doi.org/10.17044/scilifelab.28491956.
+
+Please clone this repository and read the very detailed `vignette.html`, please follow the preparation steps described in the vignette, after that the workflow can be executed as:
+
+    cd /home/nikolay
+    git clone https://github.com/NikolayOskolkov/MCWorkflow
+    cd MCWorkflow
+    ./micr_cont_detect.sh GCF_002220235.fna.gz /home/nikolay/MCWorkflow/data GTDB 4 \
+    GTDB_sliced_seqs_sliding_window.fna.gz GTDB_fna2name.txt
+
+The vignette `vignette.html` walks you through the explanations of the workflow parameters and interpretation of the output files.
+
+
 
 
 
