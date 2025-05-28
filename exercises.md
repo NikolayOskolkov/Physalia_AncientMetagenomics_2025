@@ -627,6 +627,15 @@ It is typically assumed that an organism found on a blank has a lower confidence
 If negative control samples (balnks) are available, contaminating organisms can be detected by comparing their abundances in the negative controls with true samples. In this case, contaminant organisms stand out by their high prevalence in both types of samples if one simply plots mean across samples abundance of each detected organism in true samples and negative controls against each other as in the figure below:
 
 ```R
+# NOTE: the R codes below should be run on your local computer.
+# The input files are available in the "practicals"-folder after cloning
+# https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025
+# First, please, navigate to the "practicals"-folder as
+
+setwd("/your_computer/Physalia_AncientMetagenomics_2025/practicals")
+
+# then you can run the codes below using Rstudio
+
 samples<-read.delim("krakenuniq_abundance_matrix.txt",header=TRUE,
 row.names = 1, check.names = FALSE, sep = "\t")
 controls<-read.delim("blank_krakenuniq_abundance_matrix.txt",header=TRUE,
