@@ -613,7 +613,7 @@ Typcally, reads with PMD scores greater than 3 are considered to be reliably anc
 As mapDamage, PMDtools can also compute demination profile. However, the advantage of PMDtools that it can compute deamination profile for UDG / USER treated samples (with the flag *--CpG*). For this purpose, PMDtools uses only CpG sites which escape the treatment, so deamination is not gone completely and there is a chance to authenticate treated samples. Computing deamination pattern with PMDtoools can be achieved with the following command line (please note that the scripts *pmdtools.0.60.py* and *plotPMD.v2.R* can be downloaded from the github repository here https://github.com/pontussk/PMDtools):
 
 ```bash
-samtools view Y.pestis_sample10.bam | python2 PMDtools/pmdtools.0.60.py \ 
+samtools view Y.pestis_sample10.bam | python2 PMDtools/pmdtools.0.60.py \
 --platypus > PMDtemp.txt
 
 R CMD BATCH plotPMD.v2.R
