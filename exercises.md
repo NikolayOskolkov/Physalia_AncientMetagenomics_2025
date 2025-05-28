@@ -74,7 +74,7 @@ You should see 4 lines corresponding to each read: the first line contains the r
 Let us now count the number of reads in the fastq-files:
 
 ```bash
-zcat 01_DATA/sample1.fastq.gz | grep -c @
+zcat 01_DATA/sample1.fastq.gz | grep -c ^@
 ```
 
 How many reads do we have in the fastq-files?
