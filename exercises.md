@@ -616,7 +616,7 @@ As mapDamage, PMDtools can also compute demination profile. However, the advanta
 samtools view Y.pestis_sample10.bam | python2 PMDtools/pmdtools.0.60.py \
 --platypus > PMDtemp.txt
 
-R CMD BATCH plotPMD.v2.R
+R CMD BATCH PMDtools/plotPMD.v2.R
 ```
 
 ![](images/PMD_Skoglund_et_al_2015_Current_Biology.png)
