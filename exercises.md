@@ -574,6 +574,9 @@ Checking evenness of coverage and alignment quality can help us to make sure tha
 Deamination profile of a damaged DNA demonstrate an enrichment of C / T polymorphisms at the ends of the reads compared to all other single nucleotide substitutions. There are several tools for computing demination profile, but perhaps the most popular is [mapDamage](https://academic.oup.com/bioinformatics/article/29/13/1682/184965). The tool can be run using the following command line:
 
 ```bash
+# NOTE: you might need to install a few R packages:
+# Rscript -e "install.packages(c('inline','ggplot2','gam','Rcpp','RcppGSL'),repos='https://cloud.r-project.org')"
+
 mapDamage -i Y.pestis_sample10.sorted.bam -r NC_017168.1.fasta \
 -d MAPDAMAGE --merge-reference-sequences --no-stats
 ```
@@ -587,7 +590,12 @@ maDamage delivers a bunch of useful statistics, among other read length distribu
 Another useful tool that can be applied to assess how DNA is damaged is [PMDtools](https://github.com/pontussk/PMDtools) which is a maximum-likelihood probabilistic model that calculates an ancient score, **PMD score**, for each read. The ability of PMDtools to infer ancient status with a single read resolution is quite unique and different from mapDamage that can only assess deamination based on a number of reads. PMD scores can be computed using the following command line, please note that Python2 is needed for this purpose.
 
 ```bash
-samtools view -h Y.pestis_sample10.bam | python2 ${SCRIPTS_DIR}/pmdtools.0.60.py \
+git clone https://github.com/pontussk/PMDtools
+
+conda deactivate
+conda activate py27
+
+samtools view -h Y.pestis_sample10.bam | python2 PMDtools/pmdtools.0.60.py \
  --printDS > PMDscores.txt
 ```
 
