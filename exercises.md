@@ -25,6 +25,10 @@
 
 We will use the [Amazon Cloud](https://aws.amazon.com/ec2/) (AWS EC2) services for most of the analyses. The IP address of the remote machine will change every day, so a new IP adress will be posted in Slack each morning. Your username - that you have received by e-mail/Slack - will be the same for the whole course. We will use `ssh` to connect to the remote machine.
 
+```bash
+ssh -i ameta25.pem -XY ubuntu@54.202.26.255
+```
+
 Once you have connected to the remote machine, you will be in your home folder (`/users/userXX`, also represented by `~` or `$HOME`).
 **Remember:** You can check where you are with the command `pwd`. To have access to the course's content, let's copy the GitHub repository to your `home` folder using `git clone`:
 
