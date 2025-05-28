@@ -1,0 +1,12 @@
+Taxon	sample1	sample10	sample2	sample3	sample4	sample5	sample6	sample7	sample8	sample9
+Ralstonia solanacearum	3628	749	3751	619	1804	1384	1608	1375	0	1112
+Mycobacterium avium	8236	0	8546	273	265	3221	4808	7750	6382	0
+Burkholderia pseudomallei	7095	7310	0	0	0	13082	0	4885	1456	0
+Salmonella enterica	4356	2560	4471	4205	3588	0	13854	0	0	1959
+Pseudomonas chlororaphis	296	294	1024	0	977	374	677	276	0	0
+Neisseria meningitidis	465	0	502	0	0	7341	0	0	3268	5643
+Yersinia pestis	0	11553	0	0	7174	957	0	11485	6461	0
+Streptococcus pyogenes	0	1763	0	19339	0	6165	5435	4089	0	0
+Mycobacterium tuberculosis	0	0	469	328	463	203	0	274	0	242
+Pseudomonas aeruginosa	0	0	219	0	231	0	0	0	0	0
+Enterococcus faecalis	0	0	0	5310	0	0	11627	3919	6433	1166

@@ -1,0 +1,33 @@
+control1	control2	control3	control4	control5	control6
+Homo sapiens	24023	669	11963204	438371	17316	5514190
+Stenotrophomonas maltophilia	1231	396	0	391	0	0
+Cutibacterium acnes	603	0	782	1320	0	0
+Sphingomonas melonis	210	0	0	430	0	0
+Paraburkholderia aromaticivorans	0	0	1406	0	0	0
+Burkholderia multivorans	0	0	9451	0	0	0
+Burkholderia cenocepacia	0	0	3122	0	0	0
+Burkholderia ubonensis	0	0	2698	0	0	0
+Burkholderia cepacia	0	0	2303	0	0	0
+Burkholderia gladioli	0	0	5805	0	0	0
+Burkholderia plantarii	0	0	3642	0	0	0
+Burkholderia pseudomallei	0	0	2580	0	0	0
+Burkholderia lata	0	0	280	0	0	0
+Burkholderia thailandensis	0	0	3856	0	0	0
+Burkholderia stabilis	0	0	1508	0	0	0
+Burkholderia glumae	0	0	3560	0	0	0
+Paraburkholderia sp. 7MH5	0	0	210	0	0	0
+Burkholderia pyrrocinia	0	0	243	0	0	0
+Paraburkholderia caribensis	0	0	1540	0	0	0
+Ralstonia solanacearum	0	0	1681	0	0	0
+Burkholderia vietnamiensis	0	0	1350	0	0	0
+Burkholderia contaminans	0	0	1989	0	0	0
+Burkholderia oklahomensis	0	0	1984	0	0	0
+Methylorubrum extorquens	0	0	615	0	0	0
+Pseudomonas aeruginosa	0	0	750	0	0	0
+Acinetobacter junii	0	0	1081	0	0	0
+Paraburkholderia hospita	0	0	540	0	0	0
+Pandoraea pnomenusa	0	0	621	0	0	0
+Cupriavidus taiwanensis	0	0	499	0	0	0
+Cupriavidus metallidurans	0	0	688	0	0	0
+Rhodopseudomonas palustris	0	0	217	0	0	0
+Moraxella osloensis	0	0	335	0	0	0
