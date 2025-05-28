@@ -11,6 +11,8 @@
    2. [Bonus: Kraken2](#bonus-kraken2)
    3. [Bonus: sourmash](#bonus-sourmash)
 5. [Authentication analysis](#authentication-analysis)
+   1. [Genomic hit confirmation](#genomic-hit-confirmation)
+   2. [Ancient status](#ancient-specific-validation-criteria)
 6. [Decontamination analysis](#microbiome-contamination-correction)
    1. [Microbial source tracking](#microbial-source-tracking)
    2. [Microbial contamination in eukaryotic references](#microbial-contamination-in-eukaryotic-references)
@@ -416,7 +418,7 @@ The section has the following outline:
   - Similarity to expected microbiome source (microbial source tracking)
 
 
-# Genomic hit confirmation
+## Genomic hit confirmation
 
 Once an organism has been detected in a sample (via alignment, classification or *de-novo* assembly), one needs to take a closer look at multiple quality metrics in order to reliably confrm that the organism is not a false-positive detection and is of ancient origin. The methods used for this purpose can be divided into modern validation and ancient-specific validation criteria. Below, we will cover both of them.
 
