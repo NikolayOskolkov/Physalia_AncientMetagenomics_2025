@@ -464,9 +464,9 @@ gunzip ${ID}_genomic.fna.gz; echo NC_017168.1 > region.bed
 seqtk subseq ${ID}_genomic.fna region.bed > NC_017168.1.fasta
 bowtie2-build --large-index NC_017168.1.fasta NC_017168.1.fasta --threads 20
 
-bowtie2 --large-index -x NC_017168.1.fasta --end-to-end --threads 20 \ 
---very-sensitive -U ../03_TRIMMED/sample10.trimmed.fastq.gz | samtools view -bS\
- -h -q 1 -@ 20 - > Y.pestis_sample10.bam
+bowtie2 --large-index -x NC_017168.1.fasta --end-to-end --threads 20 \
+--very-sensitive -U ../03_TRIMMED/sample10.trimmed.fastq.gz | samtools view -bS \
+-h -q 1 -@ 20 - > Y.pestis_sample10.bam
 samtools sort Y.pestis_sample10.bam -@ 20 > Y.pestis_sample10.sorted.bam
 samtools index Y.pestis_sample10.sorted.bam
 ```
