@@ -686,6 +686,14 @@ Another popular tool for detecting contaminating microorganisms is [Recentrifuge
 If one wants to assess the degree of contamination for each sample, there is a handy tool [cuperdec](https://github.com/jfy133/cuperdec), which is an R package that allows a quick comparison of microbial profiles in a query metagenomic sample against a database. The idea of *cuperdec* is to rank organisms in each sample by their abundance and then using an "expanding window" approach to compute their enrichment in a reference database that contains a comprehensive list of microbial organisms which are specific to a tissue / environment in question. The tool produces so-called *Cumulative Percent Decay* curves that aim to represent the level of endogenous content of microbiome samples, such as ancient dental calculus, to help to identify samples with low levels of preservation that should be discarded for downstream analysis.
 
 ```R
+# NOTE: the R codes below should be run on your local computer.
+# The input files are available in the "practicals"-folder after cloning
+# https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025
+# First, please, navigate to the "practicals"-folder as
+
+setwd("/your_computer/Physalia_AncientMetagenomics_2025/practicals")
+
+# Please make sure to have the three R packages below installed:
 library("cuperdec"); library("magrittr"); library("dplyr")
 
 # Load database (in this case oral database)
@@ -720,6 +728,15 @@ Originally, SourceTracker was developed for 16S data, i.e. using only 16S riboso
  Sourcetracker expects two input data frames: metadata with at least sample name, environment and source / sink labels, and abundance matrix. Note that source and sink metadata and abundances have to be merged together prior to using SourceTracker. Here we are going to use data from the [Human Microbiome Project (HMP)](https://hmpdacc.org/) as sources, and we are going to merge the HMP data with the sink samples into single OTU table and meta-data table.
 
 ```R
+# NOTE: the R codes below should be run on your local computer.
+# The input files are available in the "practicals"-folder after cloning
+# https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025
+# First, please, navigate to the "practicals"-folder as
+
+setwd("/your_computer/Physalia_AncientMetagenomics_2025/practicals")
+
+# then you can run the codes below using Rstudio
+
 otus_hmp <- read.delim("otus_hmp.txt", header = TRUE, row.names = 1, sep = "\t")
 meta_hmp <- read.delim("meta_hmp.txt", header = TRUE, row.names = 1, sep = "\t")
 
@@ -741,7 +758,7 @@ Next, training SourceTracker on source samples and running predictions on sink s
 
 ```R
 # Train SourceTracker on sources (HMP) and run predictions on sinks
-source('/sourcetracker/src/SourceTracker.r')
+source('SourceTracker.r')
 train.ix <- which(metadata$SourceSink=='source')
 test.ix <- which(metadata$SourceSink=='sink')
 st <- sourcetracker(otus[train.ix,], envs[train.ix])
@@ -781,16 +798,15 @@ A drawback of SourceTracker, mSourceTracker and FEAST is that they require a mic
 *decOM* uses [kmtricks](https://academic.oup.com/bioinformaticsadvances/article/2/1/vbac029/6576015) to compute a matrix of k-mer counts on raw reads (FASTQ files) from source samples, and then uses the source k-mer abundance matrix for looking up k-mer composition of sink samples. This allows *decOM* to calculate microbial contributions / fractions from the sources. For example, for estimating contributions from ancient Oral (aOral), modern Oral (mOral), Skin and Sediment / Soil environments one can use an already computed source matrix from here [https://github.com/CamilaDuitama/decOM/](https://github.com/CamilaDuitama/decOM/) and provide it as a *-p_sources* parameter. Then *decOM* can be run using the following command line:
 
 ```bash
-git clone https://github.com/CamilaDuitama/decOM.git  
-cd decOM  
-conda env create -n decOM --file environment.yml  
-conda deactivate
-conda activate decOM  
+# decOM can be installed in the following way:
+# git clone https://github.com/CamilaDuitama/decOM.git
+# cd decOM
+# conda env create -n decOM --file environment.yml
 
-export PATH=/absolute/path/to/decOM:${PATH}
+conda activate decOM 
 
 # Prepare input fof-files that have a key - value format
-cd CUTADAPT # folder containing trimmed fastq-files
+cd 03_TRIMMED # folder containing trimmed fastq-files
 for i in {1..10}
 do
 echo "sample${i}_trimmed : sample${i}_trimmed.fastq.gz" > sample${i}_trimmed.fof
@@ -798,18 +814,27 @@ echo sample${i}_trimmed >> FASTQ_NAMES_LIST.txt
 done
 
 # Download pre-built kmer-matrix of sources (aOral, mOral, Sediment/Soil, Skin)
-wget https://zenodo.org/record/6513520/files/decOM_sources.tar.gz  
+wget https://zenodo.org/record/6513520/files/decOM_sources.tar.gz
 tar -xf decOM_sources.tar.gz
 
 # Run decOM predictions
 decOM -p_sources decOM_sources/ -p_sinks FASTQ_NAMES_LIST.txt \
--p_keys decOM/FASTQ -mem 900GB -t 15
+-p_keys 03_TRIMMED -mem 900GB -t 15
 ```
 
 In the command line above, he *-p_sinks* parameter provides a list of sink samples, for example *SRR13355807*.
 The sink fastq-files are placed in *decOM/FASTQ* together with *keys* fof-files containing the mapping between fastq file names and locations of the fastq-files, for example *SRR13355807 : decOM/FASTQ/SRR13355807.fastq.gz*. The contributions from the sources to the sink samples, which are recorded in the *decOM_output.csv* output file, can then be processed and plotted as follows:
 
 ```R
+# NOTE: the R codes below should be run on your local computer.
+# The input files are available in the "practicals"-folder after cloning
+# https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025
+# First, please, navigate to the "practicals"-folder as
+
+setwd("/your_computer/Physalia_AncientMetagenomics_2025/practicals")
+
+# then you can run the codes below using Rstudio
+
 df<-read.csv("decOM_output.csv", check.names=FALSE)
 
 result <- subset(df, select = c("Sink", "Sediment/Soil", "Skin", "aOral", 
