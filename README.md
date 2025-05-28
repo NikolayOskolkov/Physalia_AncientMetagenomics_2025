@@ -58,13 +58,13 @@ By completing this course, you will:
 
 | Time           | Activity                                                                                   | Link                                                                                                                                     |
 |----------------|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| 14.00 - 15.00  | Decontamination analysis of metegenomic data and eukaryotic reference genomes              | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_Decontamination.pdf)             |
+| 14.00 - 15.00  | Authentication analysis: genomic hit confirmation and ancient status                       | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_Authentication.pdf)              |
 | 15.00 - 15.15  | Break                                                                                      |                                                                                                                                          |
-| 15.15 - 16.45  | Practical: microbial contamination correction and source tracking                          | [Lab](exercises.md#microbiome-contamination-correction)                                                                                  |
+| 15.15 - 16.45  | Practical: genomic hit confirmation by evenness of coverage and damage pattern             | [Lab](exercises.md#genomic-hit-confirmation)                                                                                             |
 | 16.45 - 17.00  | Break                                                                                      |                                                                                                                                          |
-| 17.00 - 18.00  | Authentication analysis                                                                    | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_Authentication.pdf)              |
+| 17.00 - 18.00  | Decontamination analysis of metegenomic data and eukaryotic reference genomes              | [Slides](https://github.com/NikolayOskolkov/Physalia_AncientMetagenomics_2025/raw/master/slides/Lecture_Decontamination.pdf)             |
 | 18.00 - 18.15  | Break                                                                                      |                                                                                                                                          |
-| 18.15 - 20.00  | Practical: genomic hit confirmation by evenness of coverage and damage pattern             | [Lab](exercises.md#genomic-hit-confirmation)                                                                                             |
+| 18.15 - 20.00  | Practical: microbial contamination correction and source tracking                          | [Lab](exercises.md#microbiome-contamination-correction)                                                                                  |
 
 
 ## Day 3: 2 pm - 8 pm Berlin time
