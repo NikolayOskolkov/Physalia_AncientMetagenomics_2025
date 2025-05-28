@@ -12,6 +12,7 @@
    3. [Bonus: sourmash](#bonus-sourmash)
 5. [Decontamination analysis](#microbiome-contamination-correction)
    1. [Microbial source tracking](#microbial-source-tracking)
+   2. [Microbial contamination in eukaryotic references](#microbial-contamination-in-eukaryotic-references)
 6. [Metagenome assembly](#metagenome-assembly)
    1. [Assembly QC](#assembly-qc)
    2. [Abundance quantification of assembled contigs](#abundance-quantification-of-assembled-contigs)
