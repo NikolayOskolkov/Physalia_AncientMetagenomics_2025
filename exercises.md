@@ -1035,10 +1035,12 @@ The last thing we need to download are a few helping files with useful NCBI taxo
 
 ```bash
 cd aMeta/resources
-wget https://figshare.scilifelab.se/ndownloader/files/38201982 && \
-mv 38201982 seqid2taxid.map.orig
-wget https://figshare.scilifelab.se/ndownloader/files/38201937 && \
-mv 38201937 nucl_gb.accession2taxid
+#wget https://figshare.scilifelab.se/ndownloader/files/38201982 && \
+#mv 38201982 seqid2taxid.map.orig
+cp ~/Share/seqid2taxid.map.orig .
+#wget https://figshare.scilifelab.se/ndownloader/files/38201937 && \
+#mv 38201937 nucl_gb.accession2taxid
+cp ~/Share/nucl_gb.accession2taxid .
 cp -r ~/Share/Databases/Bowtie2_index .
 cp ~/Share/library.fna .
 #wget https://figshare.scilifelab.se/ndownloader/files/37395181 && \
