@@ -1161,9 +1161,8 @@ cd ~/Physalia_AncientMetagenomics_2025
 
 conda activate ancientmetagenomics
 
-for sample in $(cat SAMPLES.txt); do
-megahit -r 04_HOST_REMOVAL/${sample}_unaligned_to_hg38.fastq.gz --out-dir 06_ASSEMBLY --min-contig-len 100 -t 4
-done
+megahit -r 04_HOST_REMOVAL/sample10_unaligned_to_hg38.fastq.gz --out-dir 06_ASSEMBLY --min-contig-len 100 -t 4
+
 ```
 
 ### Assembly QC
