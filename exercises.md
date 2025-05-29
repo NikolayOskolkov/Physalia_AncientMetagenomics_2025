@@ -1039,8 +1039,10 @@ wget https://figshare.scilifelab.se/ndownloader/files/38201982 && \
 mv 38201982 seqid2taxid.map.orig
 wget https://figshare.scilifelab.se/ndownloader/files/38201937 && \
 mv 38201937 nucl_gb.accession2taxid
-wget https://figshare.scilifelab.se/ndownloader/files/37395181 && \
-mv 37395181 library.fna.gz && gunzip library.fna.gz
+cp -r ~/Share/Databases/Bowtie2_index .
+
+#wget https://figshare.scilifelab.se/ndownloader/files/37395181 && \
+#mv 37395181 library.fna.gz && gunzip library.fna.gz
 ```
 
 
@@ -1155,6 +1157,8 @@ We have only given the output directory in the script below; modify it as necess
 ```bash 
 cd ~/Physalia_AncientMetagenomics_2025
 
+conda activate ancientmetagenomics
+
 for sample in $(cat SAMPLES.txt); do
 megahit -r 04_HOST_REMOVAL/${sample}_unaligned_to_hg38.fastq.gz --out-dir 06_ASSEMBLY --min-contig-len 100 -t 4
 done
@@ -1165,7 +1169,7 @@ done
 Now we are going to explore the assembled contigs. First, we will run QC for the assembled contigs and compute N50 value.
 
 ```bash
-mkdir 07_ASSEMBLY_QC
+mkdir 08_ASSEMBLY_QC
 
 conda activate ancientmetagenomics
 
