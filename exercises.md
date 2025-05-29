@@ -16,7 +16,8 @@
 6. [Decontamination analysis](#microbiome-contamination-correction)
    1. [Microbial source tracking](#microbial-source-tracking)
    2. [Microbial contamination in eukaryotic references](#microbial-contamination-in-eukaryotic-references)
-7. [Metagenome assembly](#metagenome-assembly)
+7. [aMeta ancient metagenomic workflow](ameta-introduction-and-installation)
+8. [Metagenome assembly](#metagenome-assembly)
    1. [Assembly QC](#assembly-qc)
    2. [Abundance quantification of assembled contigs](#abundance-quantification-of-assembled-contigs)
    3. [Taxonomic annotation of assembled contigs](#taxonomic-annotation-of-assembled-contigs)
@@ -992,7 +993,7 @@ To ensure that aMeta has been correctly installed, we can run a quick test:
 
 ```bash
 cd .test
-./runtest.sh -j 20
+./runtest.sh -j 1
 ```
 
 ## Downloading data, databases and indexes
@@ -1001,27 +1002,33 @@ For demonstration purposes we will use 10 simulated with [gargammel](https://aca
 
 ```bash
 cd aMeta
-mkdir data && cd data
-wget https://figshare.scilifelab.se/ndownloader/articles/21261405/versions/1 \
-&& export UNZIP_DISABLE_ZIPBOMB_DETECTION=true && unzip 1 && rm 1
+cp -r ~/Share/data .
+
+# In case you want to download the data, they are available here:
+#wget https://figshare.scilifelab.se/ndownloader/articles/21261405/versions/1 \
+#&& export UNZIP_DISABLE_ZIPBOMB_DETECTION=true && unzip 1 && rm 1
 ```
 
 To run aMeta, we willl need a small KrakenUniq database. Here we download a pre-built database based on complete microbial NCBI RefSeq reference genomes:
 
 ```bash
 cd aMeta/resources
-mkdir KrakenUniq_DB && cd KrakenUniq_DB
-wget https://figshare.scilifelab.se/ndownloader/articles/21299541/versions/1 \
-&& export UNZIP_DISABLE_ZIPBOMB_DETECTION=true && unzip 1 && rm 1
+cp -r ~/Share/Databases/KrakenUniq_DB .
+
+# In case you want to download the database, it is available here:
+#wget https://figshare.scilifelab.se/ndownloader/articles/21299541/versions/1 \
+#&& export UNZIP_DISABLE_ZIPBOMB_DETECTION=true && unzip 1 && rm 1
 ```
 
 We will also need a Bowtie2 index corresponding to the KrakenUniq reference database:
 
 ```bash
 cd aMeta/resources
-mkdir Bowtie2_index && cd Bowtie2_index
-wget https://figshare.scilifelab.se/ndownloader/articles/21185887/versions/1 \
-&& export UNZIP_DISABLE_ZIPBOMB_DETECTION=true && unzip 1 && rm 1
+cp -r ~/Share/Databases/Bowtie2_index .
+
+# In case you want to download the Bowtie2 index, it is available here:
+#wget https://figshare.scilifelab.se/ndownloader/articles/21185887/versions/1 \
+#&& export UNZIP_DISABLE_ZIPBOMB_DETECTION=true && unzip 1 && rm 1
 ```
 
 The last thing we need to download are a few helping files with useful NCBI taxonomy information:
@@ -1098,8 +1105,8 @@ env=$(grep hops .snakemake/conda/*yaml | awk '{print $1}' | sed -e "s/.yaml://g"
 conda activate $env
 version=$(conda list malt --json | grep version | sed -e "s/\"//g" | awk '{print $2}')
 cd $env/opt/malt-$version
-sed -i -e "s/-Xmx64G/-Xmx1000G/" malt-build.vmoptions
-sed -i -e "s/-Xmx64G/-Xmx1000G/" malt-run.vmoptions
+sed -i -e "s/-Xmx64G/-Xmx96G/" malt-build.vmoptions
+sed -i -e "s/-Xmx64G/-Xmx96G/" malt-run.vmoptions
 cd -
 conda deactivate
 ```
