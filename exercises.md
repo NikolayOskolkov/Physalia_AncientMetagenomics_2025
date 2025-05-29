@@ -1040,7 +1040,7 @@ mv 38201982 seqid2taxid.map.orig
 wget https://figshare.scilifelab.se/ndownloader/files/38201937 && \
 mv 38201937 nucl_gb.accession2taxid
 cp -r ~/Share/Databases/Bowtie2_index .
-
+cp ~/Share/library.fna .
 #wget https://figshare.scilifelab.se/ndownloader/files/37395181 && \
 #mv 37395181 library.fna.gz && gunzip library.fna.gz
 ```
