@@ -985,7 +985,7 @@ It can be cloned from NBISweden github repository and installed as follows:
 ```bash
 git clone https://github.com/NBISweden/aMeta
 cd aMeta
-mamba env create -f workflow/envs/environment.yaml
+#conda env create -f workflow/envs/environment.yaml
 conda activate aMeta
 ```
 
