@@ -1200,13 +1200,13 @@ Now, when we have assembled contigs, we might wonder what organisms they corresp
 To quantify abundance of each assembled contig, let us now align the trimmed reads back to assembled contigs. We will do it with `Bowtie2` aligner, and we will first have to build the index for the assembled contigs.
 
 ```bash
-bowtie2-build --large-index 08_ASSEMBLY/final.contigs.fa 08_ASSEMBLY/final.contigs.fa --threads 4
+bowtie2-build --large-index 06_ASSEMBLY/final.contigs.fa 06_ASSEMBLY/final.contigs.fa --threads 4
 
-bowtie2 --large-index -x 08_ASSEMBLY/final.contigs.fa --end-to-end --threads 4 --very-sensitive \
-03_TRIMMED/${sample}.fastq.gz | samtools view -bS -h -q 1 -@ 4 - \
-> 09_ASSEMBLY_QC/aligned_to_assembled_contigs.bam
+bowtie2 --large-index -x 06_ASSEMBLY/final.contigs.fa --end-to-end --threads 4 --very-sensitive \
+03_TRIMMED/${sample}.trimmed.fastq.gz | samtools view -bS -h -q 1 -@ 4 - \
+> 08_ASSEMBLY_QC/aligned_to_assembled_contigs.bam
 
-samtools view 09_ASSEMBLY_QC/aligned_to_assembled_contigs.bam | cut -f3 > 09_ASSEMBLY_QC/contig_count.txt
+samtools view 08_ASSEMBLY_QC/aligned_to_assembled_contigs.bam | cut -f3 > 08_ASSEMBLY_QC/contig_count.txt
 ```
 
 Above, we generated a bam-alignment where it is recorded to what contig each read is aligned. Then we used samtools to extract a list of contigs corresponding to each aligned read.
