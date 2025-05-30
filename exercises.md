@@ -1161,7 +1161,7 @@ cd ~/Physalia_AncientMetagenomics_2025
 
 conda activate ancientmetagenomics
 
-megahit -r 04_HOST_REMOVAL/sample10_unaligned_to_hg38.fastq.gz --out-dir 06_ASSEMBLY --min-contig-len 100 -t 4
+megahit -r 04_HOST_REMOVAL/sample10_unaligned_to_hg38.fastq.gz --out-dir 08_ASSEMBLY --min-contig-len 100 -t 4
 
 ```
 
@@ -1170,7 +1170,7 @@ megahit -r 04_HOST_REMOVAL/sample10_unaligned_to_hg38.fastq.gz --out-dir 06_ASSE
 Now we are going to explore the assembled contigs. First, we will run QC for the assembled contigs and compute N50 value.
 
 ```bash
-mkdir 08_ASSEMBLY_QC
+mkdir 09_ASSEMBLY_QC
 
 conda activate ancientmetagenomics
 
@@ -1182,7 +1182,7 @@ conda activate ancientmetagenomics
 # wget -O- https://github.com/attractivechaos/k8/releases/download/v1.2/k8-1.2.tar.bz2 | tar -jxf -
 # however, k8 is already installed for you in ~/Share/k8-1.2/ 
 
-~/Share/k8-1.2/./k8-x86_64-Linux ~/Share/calN50.js 06_ASSEMBLY/final.contigs.fa > 08_ASSEMBLY_QC/assemstats.txt
+~/Share/k8-1.2/./k8-x86_64-Linux ~/Share/calN50.js 08_ASSEMBLY/final.contigs.fa > 09_ASSEMBLY_QC/assemstats.txt
 ```
 
 N50 has a complex meaning. It is some sort of "average" (or representative) contig length but not exactly.
@@ -1200,13 +1200,13 @@ Now, when we have assembled contigs, we might wonder what organisms they corresp
 To quantify abundance of each assembled contig, let us now align the trimmed reads back to assembled contigs. We will do it with `Bowtie2` aligner, and we will first have to build the index for the assembled contigs.
 
 ```bash
-bowtie2-build --large-index 06_ASSEMBLY/final.contigs.fa 06_ASSEMBLY/final.contigs.fa --threads 4
+bowtie2-build --large-index 08_ASSEMBLY/final.contigs.fa 06_ASSEMBLY/final.contigs.fa --threads 4
 
-bowtie2 --large-index -x 06_ASSEMBLY/final.contigs.fa --end-to-end --threads 4 --very-sensitive \
+bowtie2 --large-index -x 08_ASSEMBLY/final.contigs.fa --end-to-end --threads 4 --very-sensitive \
 03_TRIMMED/${sample}.trimmed.fastq.gz | samtools view -bS -h -q 1 -@ 4 - \
-> 08_ASSEMBLY_QC/aligned_to_assembled_contigs.bam
+> 09_ASSEMBLY_QC/aligned_to_assembled_contigs.bam
 
-samtools view 08_ASSEMBLY_QC/aligned_to_assembled_contigs.bam | cut -f3 > 08_ASSEMBLY_QC/contig_count.txt
+samtools view 09_ASSEMBLY_QC/aligned_to_assembled_contigs.bam | cut -f3 > 09_ASSEMBLY_QC/contig_count.txt
 ```
 
 Above, we generated a bam-alignment where it is recorded to what contig each read is aligned. Then we used samtools to extract a list of contigs corresponding to each aligned read.
